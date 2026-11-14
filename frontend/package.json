@@ -1,0 +1,28 @@
+{
+  "name": "knowledge-base-console",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5176 --strictPort",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 5176 --strictPort",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "vue": "^3.5.0",
+    "pinia": "^3.0.0",
+    "vue-router": "^4.5.0",
+    "element-plus": "^2.11.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@vitejs/plugin-vue": "^6.0.0",
+    "typescript": "~5.9.0",
+    "vite": "^7.0.0",
+    "vue-tsc": "^3.0.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  }
+}

@@ -2,9 +2,9 @@
 
 ## 交付状态与边界
 
-本项目面向中文技术支持与操作知识库，依据工作区只读需求 `D:/Project/PycharmProject/real/2.9.md`，并与 `real/4.1.md` 的生成模型能力目标衔接。**当前仅完成初始化与实现方案，业务功能尚未开发。** 本文所有接口、页面、任务、部署、数据与验收指标均为后续设计；未生成可运行前后端、Compose、业务数据库或测试数据，未运行联调和模型推理。
+本项目面向中文技术支持与操作知识库，依据工作区只读需求 `D:/Project/PycharmProject/real/2.9.md`，并与 `real/4.1.md` 的生成模型能力目标衔接。当前已实施阶段1组织与权限：真实FastAPI登录/组织/RBAC、SQLAlchemy与Alembic迁移、四维ACL文本知识读取及配套Vue控制台。依赖安装本地，正式PostgreSQL16位于虚拟机，通过SSH隧道连接；不使用本机Docker数据库。阶段2至7、文件/切片/检索/问答/FAQ/运营及微调模型联调仍是后续设计，不能视为已实现或已验收。
 
-最终生成模型必须是 `knowledge-model-finetuning` 交付的 `kb-grounded-qwen3-4b-v1`，基座对照不算完成。嵌入和重排模型不在本次微调范围。当前包仅有中文模块文档字符串，Python 元数据无业务依赖；真实开发按 TDD 先为行为编写最小失败测试，再实现与验证，非行为文档和包注释不增造测试。
+最终生成模型必须是 `knowledge-model-finetuning` 交付的 `kb-grounded-qwen3-4b-v1`，基座对照不算完成。嵌入和重排模型不在本次微调范围。Python已按阶段1真实需要声明和锁定依赖；本阶段先运行行为红测再实现，实际验证记录在任务进度。初始化src包仍只含中文模块说明，业务入口位于backend.app。
 
 ## 需求覆盖表
 
@@ -245,4 +245,4 @@ user 内容采用同一结构（尖括号内容表示运行时填充值，不是
 - [FlagEmbedding官方仓库](https://github.com/FlagOpen/FlagEmbedding)：BGE-M3多语言嵌入及重排能力；[bge-m3模型页](https://huggingface.co/BAAI/bge-m3)与[bge-reranker-v2-m3模型页](https://huggingface.co/BAAI/bge-reranker-v2-m3)许可前期通过搜索核实，下载时复核。
 - [Kubernetes中文官方文档](https://kubernetes.io/zh-cn/docs/home/)提示译文可能过时，官网CC BY 4.0前期经官方站点搜索核实；[Python 3.11许可](https://docs.python.org/zh-cn/3.11/license.html)说明PSF及示例代码0BSD。
 
-上述官方能力/许可说明、本文项目设计值与本机实测须区分：切片512/64、召回50/50、RRF60、最多8片、FAQ7天5次均为项目设计值；检索阈值、质量门槛、资源预算、毫秒级FAQ、训练提升与运行兼容性均未实测。本次只验证Python项目初始化、离线锁与包导入，不声称业务、性能、训练或模型联调通过。
+上述官方能力/许可说明、本文项目设计值与实测须区分：切片512/64、召回50/50、RRF60、最多8片、FAQ7天5次均为后续项目设计值；检索阈值、模型质量门槛、训练资源预算、毫秒级FAQ、训练提升与推理兼容性均未实测。阶段1仅验证组织、身份、功能权限和真实文本单位ACL、虚拟机数据库迁移及本地控制台，不声称全平台、性能、训练或微调模型联调通过。
