@@ -1,0 +1,10 @@
+[project]
+name = "knowledge-base-platform"
+version = "0.1.0"
+description = "中文技术支持与操作知识库平台初始化与实现方案"
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+dependencies = []
+
+[tool.uv]
+package = false
