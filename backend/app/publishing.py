@@ -2,6 +2,7 @@
 from datetime import datetime, timezone
 from sqlalchemy import select
 from .models import Chunk, Knowledge, KnowledgeVersion
+from .evidence import invalidate_faqs
 
 class PublishError(ValueError):
     """表示候选未完成、已过期或知识已停用删除。"""
@@ -21,6 +22,7 @@ def publish_version(session, knowledge_id: int, version_id: int, expected_versio
     chunks = list(session.scalars(select(Chunk).where(Chunk.version_id == version_id)))
     if not chunks or any(chunk.embedding is None or chunk.search_vector is None for chunk in chunks):
         raise PublishError('候选版本的向量或关键词索引尚未完整构建')
+    invalidate_faqs(session, knowledge_id)
     version.status = 'ready'
     version.error = None
     knowledge.active_version_id = version.id

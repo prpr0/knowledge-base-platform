@@ -2,7 +2,7 @@
 
 中文技术支持与操作知识库平台。本地FastAPI、Vue控制台与Celery worker，虚拟机PostgreSQL16/pgvector及独立Redis持久化服务。
 
-已实现组织身份/RBAC、四维ACL、多格式单篇/批量/目录路径导入、真实token切片、BGE向量与中文全文索引、版本重建/启停/删除、鉴权下载和混合检索。流式问答、FAQ/缺口、运营看板及微调生成服务接入继续按方案实施；当前检索页展示真实来源片段，不冒充已完成生成问答。
+已实现组织身份/RBAC、四维ACL、多格式导入、真实token切片与BGE混合检索、版本发布与鉴权下载、私人会话/SSE、安全历史及引用、FAQ聚类审核缓存、缺口补充任务、运营看板和独立审计。生成入口只接受指定微调模型发布及独立检索校准；当前没有真实微调产物，生成问答明确失败，FAQ与无证据拒答不调用模型。
 
 本项目对应 `real/2.9.md` 的知识维护、权限问答、FAQ、缺口与运营需求。最终生成模型必须来自独立项目 `knowledge-model-finetuning`，发布别名为 `kb-grounded-qwen3-4b-v1`。 两项目通过 OpenAI 兼容服务契约协作，不复制代码或导入兄弟目录。微调模型发布前，基座对照实验不计为最终联调成功。
 
@@ -98,10 +98,30 @@ Windows使用solo池。任务进度、错误及发布状态以PostgreSQL为准�
 “知识检索”使用向量/关键词各50条、RRF60、当前ACL过滤后BGE重排，最多8片并受token预算限制。受限候选正文/标题/编号/数量/分数不进入重排或客户端，只给固定提示。页面分数为模型排序输出，不代表已校准置信度；低证据阈值与生成问答质量仍需独立验证集和发布微调模型验收。
 
 
+## 问答、FAQ与运营
+
+新增动作分别为`chat:ask`、`faq:manage`、`gap:manage`、`metrics:read`、`audit:read`、`model:manage`。迁移不会给旧账号隐式提权；已有管理员通过“角色权限”显式勾选。菜单与服务端检查使用同一权限目录，管理员仍不能绕过正文ACL。
+
+“AI智能问答”支持本人会话创建/改名/删除、安全Markdown与代码高亮复制、fetch SSE和中止。每轮检查当前证据，历史读取与引用预览重新鉴权；一个来源失效时整条答案不可用。事件为`meta/delta/citations/usage/done/error`，失败无成功done，未知Token不估算。受限来源只给固定提示，候选ID仅`audit:read`可查看。
+
+“FAQ挖掘审核”提交真实Celery任务。7天内同部门和同来源版本的问题用真实BGE聚类，至少5次产生候选；相似度`FAQ_CLUSTER_SIMILARITY=.90`是设计参数，不是质量概率。草案明确标为资料摘录，人工润色并保留引用后才能发布。发布记录完整来源，Redis键隔离身份/权限版本/全部来源版本，命中仍逐项复核；不同来源必须全部获准。知识更新、ACL变化、停用和删除使依赖FAQ失效。无部门候选仅创建者可见，无部门缺口按本人聚合。
+
+无召回或已验证低证据请求进入缺口池；纯权限阻断及模型服务失败不误记缺口。补充任务导入入口携带`supplement_task_id`，关联导入全部成功发布后，补充任务和缺口同事务关闭。指标来自真实有效问答审计，包含失败、拒答和权限拦截，排除认证/格式错误；Token未知次数单列。`POST /metrics/aggregate`提交每日快照任务，`GET /metrics`使用相同计数规则。图表无演示数据，问题及来源排行另受本人/直属部门和当前ACL限制。
+
+## 正式模型配置与门禁
+
+“模型设置”只能由`model:manage`维护。服务环境可用`MODEL_BASE_URL`、固定`MODEL_NAME=kb-grounded-qwen3-4b-v1`和`MODEL_API_KEY`；数据库保存配置后不再混用环境值。API密钥以Fernet加密，独立`CONFIG_ENCRYPTION_KEY`由运行环境提供，缺失时拒绝写入密钥。GET不回显凭证或密文；空密钥提交表示保留原值。URL只允许不含内嵌凭证的HTTP/HTTPS。
+
+发布清单路径为`MODEL_RELEASE_MANIFEST_PATH`，校准路径为`MODEL_CALIBRATION_MANIFEST_PATH`。清单包含`model_name/model_version/base_model/base_revision/artifacts:[{path,sha256}]/evaluation_report`；`base_model`固定`Qwen/Qwen3-4B-Instruct-2507`，所有文件限于清单目录，评估报告本身必须列入摘要。报告`metrics.base`和`metrics.finetuned`包含`citation_validity/evidence_support/keypoint_coverage/terminology_format/refusal_recall/answerable_false_refusal`比例；执行方案固定门槛及基座比较，未通过不发布。配置与使用前重新验证，不以布尔标记代替文件证据。
+
+校准报告包含`validated=true`、`configuration_id`、有限`threshold`，以及`unanswerable_count/wrong_answer_count/answerable_count/supported_retrieval_count`真实人工审核计数；错误作答率须≤5%。配置标识可从模型设置页读取，绑定当前检索模型路径与50/50、RRF60、8片、4096/1024预算。模型或检索参数变化后需重新独立校准。当前不生成或伪造报告；没有真实发布与校准时，其他平台链路可运行，模型生成返回明确error。
+
+上游使用OpenAI兼容`POST /v1/chat/completions`、`stream=true`与真实usage。输入使用固定证据system约束、问题及本轮编号证据；按真实Qwen聊天模板计数，总4096、生成预留1024。不存在的引用编号使本轮失败，不生成虚构卡片。
+
 ## 验证与权限语义
 
 ```powershell
-.venv/Scripts/python.exe -B -m pytest tests/test_api.py tests/test_documents.py tests/test_publishing.py tests/test_ingestion_api.py -q
+.venv/Scripts/python.exe -B -m pytest tests/test_qa_operations.py tests/test_model_gateway.py tests/test_api.py tests/test_publishing.py tests/test_ingestion_api.py -q
 Push-Location frontend
 npm test
 npm run build
@@ -116,10 +136,10 @@ Pop-Location
 
 ## 当前结构
 
-- `backend/app/`：组织/认证、解析切片、版本发布、任务与worker、模型资源、检索及API/维护CLI。
-- `backend/migrations/`与`backend/alembic.ini`：显式数据库迁移和真实GIN/HNSW索引；启动不自动建表。
-- `frontend/`：组织、知识/版本/切片、导入任务及真实检索控制台。
-- `tests/`：组织/ACL、解析、发布、上传重试、UUID任务进度回归。
+- `backend/app/`：组织/认证、解析索引、版本发布、Celery导入/聚类/指标、检索、模型门禁、会话SSE、完整证据授权、FAQ/缺口及独立审计。
+- `backend/migrations/`与`backend/alembic.ini`：显式迁移及真实GIN/HNSW索引；启动不自动建表，当前包含0003问答运营结构。
+- `frontend/`：组织/知识/导入/检索、会话、FAQ审核、缺口补充、运营、审计与模型设置控制台。
+- `tests/`：组织/ACL、解析发布、上传重试、历史撤权/FAQ来源AND、模型门禁、缺口/指标与前端UUID回归。
 - `deploy/logging.yaml`、`.env.example`：当前日志与运行变量说明，不含真实凭证。
 - `pyproject.toml`、`.python-version`、`uv.lock`：Python环境和依赖。
 - `src/knowledge_base_platform/__init__.py`：保留初始化包说明；运行入口在`backend.app`，不宣称已打包安装。

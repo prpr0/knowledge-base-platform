@@ -2,7 +2,7 @@
 
 ## 交付状态与边界
 
-本项目面向中文技术支持与操作知识库，依据工作区只读需求 `D:/Project/PycharmProject/real/2.9.md`，并与 `real/4.1.md` 的生成模型能力目标衔接。当前已实施阶段1组织权限、阶段2多格式导入/生命周期及阶段3真实混合检索基础：本地FastAPI/Vue/Celery、真实Qwen tokenizer切片/BGE嵌入/重排、虚拟机PostgreSQL16+pgvector/Redis、候选原子发布、进度重试和鉴权下载。问答流、多轮、FAQ/缺口、运营与微调生成服务联调继续后续实施，不把当前检索片段展示当成最终问答完成。
+本项目面向中文技术支持与操作知识库，依据工作区只读需求`real/2.9.md`与`real/4.1.md`。组织权限、多格式导入/版本发布、真实混合检索、私人会话/SSE及安全历史引用、FAQ审核缓存与真实BGE聚类、缺口补充任务、运营和独立审计均已落到代码；本地FastAPI/Vue/Celery，虚拟机PostgreSQL16+pgvector/Redis。真实微调模型和独立检索校准尚未交付，生成入口明确error，不把门禁或FAQ答复当作最终模型联调完成。
 
 最终生成模型必须是 `knowledge-model-finetuning` 交付的 `kb-grounded-qwen3-4b-v1`，基座对照不算完成。嵌入和重排模型保持预训练，不进行训练；已按授权将tokenizer/BGE资源下载本地并记录revision/hash。真实开发按TDD验证行为，实际证据在工作区任务记录；业务入口位于backend.app，初始化src包保留说明。
 
@@ -159,14 +159,14 @@ PV按有效问答请求计数，UV在同一时间窗按用户去重；有效请�
 | `/departments`、`/users`、`/roles`、`/permissions` | 部门树及组织CRUD、角色动作授权，系统管理RBAC；变更权限版本 |
 | `/knowledge`、`/knowledge/{id}/versions`、`/knowledge/{id}/acl` | 台账CRUD/启停/版本与ACL变更；管理动作RBAC，正文和预览另查当前读取ACL |
 | `POST /imports`、`GET /imports/{id}`、`POST /imports/{id}/retry` | 文件与批量相对路径、阶段/逐项进度/失败；发起人作用域及导入管理权限 |
-| `/chunks/{id}`、`/citations/{id}`、`/knowledge/{id}/download` | 编辑触发重建；预览/引用/下载重新鉴权、检查活动版本；文件不直接暴露路径 |
+| `/chunks/{id}`、`/citations/{message_id}/{label}`、`/knowledge/{id}/download` | 编辑触发重建；预览/引用/下载重新鉴权、检查完整来源集合和活动版本；文件不直接暴露路径 |
 | `/conversations`、`/conversations/{id}/messages`、`POST /conversations/{id}/ask` | 自有会话历史；历史引用重鉴权；fetch SSE问答，服务器身份决定ACL |
 | `/faq/candidates`、`/faq/releases`及审核/发布/停用动作 | 查看簇、编辑审核发布和失效；FAQ管理RBAC及全部来源读取ACL |
 | `/gaps`、`POST /gaps/{id}/tasks` | 缺口列表/频次与补充任务，按部门/问题来源隔离并需运营管理权限 |
 | `/metrics`、`/audits` | 指标作用域与审计分离，受限候选只由独立审计权限访问 |
 | `/settings/model` | 系统管理员管理配置和发布版本；API密钥写入后不回显，读取只返回是否已配置 |
 
-目录职责：`backend/`包含已实现API、迁移、组织/知识/ACL、解析索引、检索与Celery导入；问答/FAQ/缺口/运营继续后续实施。`frontend/`包含现有组织、知识、导入、检索页面与权限选择器，后续再加入SSE和安全Markdown。`deploy/`已有独立logging.yaml，未来按本地应用/虚拟机数据服务拓扑补部署材料，不生成不能运行的占位配置。`tests/`包含权限、解析、版本发布、上传重试与前端UUID回归。各阶段先失败测试再实现，不使用伪模型替代最终验收。
+目录职责：`backend/`包含组织/知识/ACL、解析索引、检索、模型发布/校准校验、会话SSE、FAQ/缺口、审计与Celery导入/聚类/指标。`frontend/`包含对应真实控制台及安全Markdown/代码复制。`deploy/`已有独立logging.yaml，数据服务位于虚拟机，不生成不能运行的占位Compose。`tests/`覆盖受影响权限、来源撤权、发布/导入、模型门禁和运营契约；实际服务与浏览器证明在任务记录，不使用伪模型替代最终验收。
 
 ## 技术支持演示设计
 
@@ -245,4 +245,4 @@ user 内容采用同一结构（尖括号内容表示运行时填充值，不是
 - [FlagEmbedding官方仓库](https://github.com/FlagOpen/FlagEmbedding)：BGE-M3多语言嵌入及重排能力；[bge-m3模型页](https://huggingface.co/BAAI/bge-m3)与[bge-reranker-v2-m3模型页](https://huggingface.co/BAAI/bge-reranker-v2-m3)许可前期通过搜索核实，下载时复核。
 - [Kubernetes中文官方文档](https://kubernetes.io/zh-cn/docs/home/)提示译文可能过时，官网CC BY 4.0前期经官方站点搜索核实；[Python 3.11许可](https://docs.python.org/zh-cn/3.11/license.html)说明PSF及示例代码0BSD。
 
-官方能力、项目设计值与实测须区分：512/64切片、50/50召回、RRF60与最多8片已落到实际代码，已使用真实tokenizer、BGE及虚拟机pgvector/全文验证；FAQ7天5次、低证据阈值、生成质量门槛及训练预算仍为后续设计。已验证阶段1/2及检索基础的真实行为，未声称生产性能、训练提升或最终微调模型联调通过。原生目录选择器的自动化未成功，目录路径API与普通批量上传已真实验证。
+官方能力、项目设计值与实测须区分：512/64切片、50/50召回、RRF60与最多8片已用真实tokenizer/BGE/pgvector/全文验证；FAQ7天5次、来源AND鉴权缓存、缺口/指标和独立审计已有实现。发布质量门槛与校准报告校验已有代码，真实微调产物、独立校准结果、生产性能和训练提升未验证。最终生成联调仍待微调项目交付，不伪报通过。原生目录选择器自动化未成功，目录路径API与普通批量上传已真实验证。

@@ -147,6 +147,10 @@ def process_task(settings, task_id: str) -> None:
                     publish_version(session, item.knowledge_id, version_id, data['expected_active_version_id'])
                     item.status, item.stage, item.progress, item.error = 'succeeded', 'done', 100, None
                     refresh_task(item.task)
+                    if item.task.status == 'succeeded' and item.task.supplement_task_id is not None:
+                        from .operations import complete_supplement_task
+                        for completed in item.task.items:
+                            complete_supplement_task(session, item.task.supplement_task_id, completed.knowledge_id)
                     session.commit()
                 logger.info('流程=导入 状态=成功 task_id=%s task_item_id=%s version_id=%s', task_id, item_id, version_id)
             except Exception as error:

@@ -30,7 +30,7 @@ function detailMessage(detail: unknown): string {
 }
 
 /** 统一附带 Bearer，FormData 由浏览器生成包含 boundary 的请求头。 */
-async function fetchResponse(path: string, method = 'GET', body?: unknown): Promise<Response> {
+async function fetchResponse(path: string, method = 'GET', body?: unknown, signal?: AbortSignal): Promise<Response> {
   const requestToken = accessToken
   const headers: Record<string, string> = { Accept: 'application/json' }
   if (requestToken) headers.Authorization = 'Bearer ' + requestToken
@@ -38,8 +38,9 @@ async function fetchResponse(path: string, method = 'GET', body?: unknown): Prom
   if (body !== undefined && !multipart) headers['Content-Type'] = 'application/json'
   let response: Response
   try {
-    response = await fetch('/api' + path, { method, headers, body: body === undefined ? undefined : multipart ? body : JSON.stringify(body), cache: 'no-store', credentials: 'omit' })
-  } catch {
+    response = await fetch('/api' + path, { method, headers, body: body === undefined ? undefined : multipart ? body : JSON.stringify(body), cache: 'no-store', credentials: 'omit', signal })
+  } catch (cause) {
+    if (cause instanceof DOMException && cause.name === 'AbortError') throw cause
     throw new ApiError(0, '无法连接服务，请检查 API 服务与网络后重试')
   }
   if (response.status === 401 && requestToken === accessToken) { accessToken = ''; onUnauthorized() }
@@ -53,7 +54,7 @@ async function fetchResponse(path: string, method = 'GET', body?: unknown): Prom
 }
 
 /** 所有 JSON 业务请求共用认证失效与服务端错误处理。 */
-async function request<T>(path: string, method = 'GET', body?: unknown): Promise<T> {
+export async function request<T>(path: string, method = 'GET', body?: unknown): Promise<T> {
   const response = await fetchResponse(path, method, body)
   if (response.status === 204) return undefined as T
   const text = await response.text()
@@ -61,12 +62,13 @@ async function request<T>(path: string, method = 'GET', body?: unknown): Promise
 }
 
 /** 以明确的文件与相对路径配对创建真实导入任务，默认不授予正文访问权。 */
-async function createImport(files: { file: File; path: string }[], acl: AclEntry[], category: string): Promise<ImportTask> {
+async function createImport(files: { file: File; path: string }[], acl: AclEntry[], category: string, supplementTaskId?: number): Promise<ImportTask> {
   const data = new FormData()
   for (const entry of files) data.append('files', entry.file, entry.file.name)
   data.append('paths', JSON.stringify(files.map((entry) => entry.path)))
   data.append('acl', JSON.stringify(acl))
   if (category.trim()) data.append('category', category.trim())
+  if (supplementTaskId !== undefined) data.append('supplement_task_id', String(supplementTaskId))
   return request<ImportTask>('/imports', 'POST', data)
 }
 
@@ -120,4 +122,32 @@ export const api = {
   downloadKnowledge,
   /** 检索获准片段，权限受限信息仅由后端提供布尔标记。 */
   search: (query: string, limit: number) => request<SearchResponse>('/search', 'POST', { query, limit }),
+}
+
+/** 用同一身份读取SSE，处理跨网络块的UTF-8和多行数据。 */
+export async function askStream(id: number, question: string, signal: AbortSignal, consume: (name: string, data: Record<string, unknown>) => void): Promise<void> {
+  const response = await fetchResponse('/conversations/' + id + '/ask', 'POST', { question }, signal)
+  if (!response.body) throw new Error('浏览器不支持流式响应')
+  const reader = response.body.getReader()
+  const decoder = new TextDecoder()
+  let buffer = '', finished = false
+  try {
+    while (true) {
+      const chunk = await reader.read()
+      buffer += decoder.decode(chunk.value, { stream: !chunk.done })
+      buffer = buffer.replace(/\r\n/g, '\n')
+      let end = buffer.indexOf('\n\n')
+      while (end >= 0) {
+        const block = buffer.slice(0, end); buffer = buffer.slice(end + 2)
+        const lines = block.split('\n')
+        const name = lines.find((line) => line.startsWith('event:'))?.slice(6).trim() ?? 'message'
+        const data = lines.filter((line) => line.startsWith('data:')).map((line) => line.slice(5).trimStart()).join('\n')
+        if (data) consume(name, JSON.parse(data) as Record<string, unknown>)
+        if (name === 'done' || name === 'error') finished = true
+        end = buffer.indexOf('\n\n')
+      }
+      if (chunk.done) break
+    }
+    if (!finished) throw new Error('连接中断，未收到问答终态')
+  } finally { await reader.cancel().catch(() => undefined); reader.releaseLock() }
 }

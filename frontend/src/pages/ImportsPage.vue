@@ -13,6 +13,7 @@ import PageHeader from '../components/PageHeader.vue'
 
 const route = useRoute()
 const router = useRouter()
+const supplementId = computed(() => { const value = String(route.query.supplement ?? ''); return /^[1-9]\d*$/.test(value) && Number.isSafeInteger(Number(value)) ? Number(value) : undefined })
 const session = useSessionStore()
 const { departments, roles, users, canReadDepartments, canReadRoles, canReadUsers, loadCandidates } = useAclCandidates()
 const files = ref<{ file: File; path: string }[]>([])
@@ -161,7 +162,7 @@ async function submitImport(): Promise<void> {
   if (!files.value.length || submitting.value || collecting.value) return
   submitting.value = true; error.value = ''
   try {
-    const task = await api.createImport(files.value, acl.value, category.value)
+    const task = await api.createImport(files.value, acl.value, category.value, supplementId.value)
     if (disposed) return
     files.value = []; selected.value = task; navigateOnSuccess = true
     if (selectedId.value === task.id) await refreshTasks()
@@ -209,6 +210,7 @@ onBeforeUnmount(() => { disposed = true; revision += 1; stopPolling(); files.val
     <el-button @click="router.push('/knowledge')">知识管理</el-button>
   </PageHeader>
   <el-alert v-if="error" :title="error" type="error" :closable="false" show-icon class="page-alert" />
+  <el-alert v-if="supplementId" :title="'本次导入关联知识补充任务 #' + supplementId + '，全部文件成功发布后自动关闭缺口。'" type="info" :closable="false" class="page-alert" />
   <section class="surface">
     <h3>选择文档</h3>
     <div class="import-dropzone" :class="{ dragging }" @dragover.prevent="dragging = true" @dragleave.prevent="dragging = false" @drop.prevent="dropFiles">
