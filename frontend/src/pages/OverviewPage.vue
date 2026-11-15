@@ -12,6 +12,8 @@ const links = computed(() => [
   { title: '用户管理', description: '分配部门、角色与账号状态', path: '/users', allowed: session.canAny(['organization:read', 'user:manage']) },
   { title: '角色权限', description: '为角色配置菜单与操作权限', path: '/roles', allowed: session.canAny(['organization:read', 'role:manage']) },
   { title: '知识与授权', description: '维护知识内容与四维访问范围', path: '/knowledge', allowed: session.canAny(['knowledge:read', 'knowledge:manage']) },
+  { title: '知识导入中心', description: '导入文件或文件夹，查看任务和失败重试', path: '/imports', allowed: session.can('knowledge:manage') },
+  { title: '知识检索', description: '检索当前身份获准读取的来源与片段', path: '/search', allowed: session.can('knowledge:read') },
 ].filter((item) => item.allowed))
 onMounted(reload)
 </script>

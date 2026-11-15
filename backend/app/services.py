@@ -46,7 +46,9 @@ def department_view(department: Department) -> dict:
 
 def knowledge_view(item: Knowledge, include_acl: bool = False) -> dict:
     """返回管理或列表元数据，绝不隐式附带正文。"""
-    result = dict(id=item.id, title=item.title, acl_version=item.acl_version)
+    result = dict(id=item.id, title=item.title, acl_version=item.acl_version,
+                  is_active=item.is_active, active_version_id=item.active_version_id,
+                  category=item.category, updated_at=item.updated_at, format=item.file_format)
     if include_acl:
         result['acl'] = [dict(type=grant.type, entity_id=grant.entity_id) for grant in item.acl]
     return result
@@ -55,7 +57,7 @@ def knowledge_view(item: Knowledge, include_acl: bool = False) -> dict:
 def readable(user: User, knowledge: Knowledge) -> bool:
     """正文读取同时受功能权限及四维当前身份约束。"""
     principal = Principal(user.id, user.department_id, frozenset(role.id for role in user.roles))
-    return 'knowledge:read' in permissions(user) and can_read(
+    return knowledge.is_active and knowledge.active_version_id is not None and 'knowledge:read' in permissions(user) and can_read(
         principal, [Grant(grant.type, grant.entity_id) for grant in knowledge.acl])
 
 

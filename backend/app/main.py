@@ -12,6 +12,7 @@ from .logging_setup import configure_logging, request_id
 from .routes import build_router
 from .database import make_engine, session_factory
 from .settings import Settings
+from .task_queue import enqueue_import
 
 def create_app(settings: Settings | None = None) -> FastAPI:
     """建立显式配置的应用和数据库会话，不自动创建业务表。"""
@@ -31,7 +32,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.state.engine = engine
     app.state.sessions = session_factory(engine)
     app.state.settings = settings
-    app.include_router(build_router(app.state.sessions, settings))
+    app.state.enqueue_import = lambda task_id: enqueue_import(settings, task_id)
+    app.include_router(build_router(app.state.sessions, settings, lambda task_id: app.state.enqueue_import(task_id)))
     logger = logging.getLogger(__name__)
 
     @app.exception_handler(IntegrityError)

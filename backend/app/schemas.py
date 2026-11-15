@@ -1,6 +1,6 @@
 """定义组织管理及知识授权的严格输入结构。"""
 from typing import Literal
-from pydantic import BaseModel, ConfigDict, Field, model_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 PERMISSIONS = [
     {"code": "organization:read", "label": "组织管理", "kind": "menu", "parent": None},
@@ -77,13 +77,39 @@ class ACLUpdate(Input):
     """以完整集合替换知识单位授权。"""
     acl: list[ACLGrant]
 
-class KnowledgeCreate(Input):
-    """创建本阶段用于真实权限读取的文本知识单位。"""
+class KnowledgeInput(Input):
+    """保留正文缩进，只规范化标题与分类标签。"""
+    model_config = ConfigDict(extra='forbid', str_strip_whitespace=False)
+
+    @field_validator('title', 'category', check_fields=False)
+    @classmethod
+    def clean_label(cls, value):
+        """标签去首尾空白，显式null交给补丁规则拒绝。"""
+        if value is None:
+            return value
+        cleaned = value.strip()
+        if not cleaned:
+            raise ValueError('标题与分类不能为空')
+        return cleaned
+
+    @field_validator('content', check_fields=False)
+    @classmethod
+    def keep_content(cls, value):
+        """正文必须有内容，但不能修剪Python代码等必要缩进。"""
+        if value is not None and not value.strip():
+            raise ValueError('知识正文不能为空')
+        return value
+
+class KnowledgeCreate(KnowledgeInput):
+    """创建待索引的真实文本知识候选。"""
     title: str = Field(min_length=1, max_length=200)
     content: str = Field(min_length=1, max_length=100000)
     acl: list[ACLGrant] = Field(default_factory=list)
+    category: str = Field(default='未分类', min_length=1, max_length=255)
 
-class KnowledgeUpdate(Input):
-    """编辑文本知识，不伪造文件导入和版本索引。"""
+class KnowledgeUpdate(KnowledgeInput):
+    """正文修改走候选重建，启停与分类变更直接生效。"""
     title: str | None = Field(default=None, min_length=1, max_length=200)
     content: str | None = Field(default=None, min_length=1, max_length=100000)
+    is_active: bool | None = None
+    category: str | None = Field(default=None, min_length=1, max_length=255)

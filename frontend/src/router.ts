@@ -13,6 +13,8 @@ const router = createRouter({
     { path: '/users', component: () => import('./pages/UsersPage.vue'), meta: { title: '用户管理', permissions: ['organization:read', 'user:manage'] } },
     { path: '/roles', component: () => import('./pages/RolesPage.vue'), meta: { title: '角色权限', permissions: ['organization:read', 'role:manage'] } },
     { path: '/knowledge', component: () => import('./pages/KnowledgePage.vue'), meta: { title: '知识与授权', permissions: ['knowledge:read', 'knowledge:manage'] } },
+    { path: '/imports', component: () => import('./pages/ImportsPage.vue'), meta: { title: '知识导入中心', permissions: ['knowledge:manage'] } },
+    { path: '/search', component: () => import('./pages/SearchPage.vue'), meta: { title: '知识检索', permissions: ['knowledge:read'] } },
     { path: '/:pathMatch(.*)*', redirect: '/' },
   ],
 })

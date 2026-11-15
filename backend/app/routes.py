@@ -9,11 +9,13 @@ from . import schemas as schema
 from . import services as service
 from .security import decode_token, hash_password, issue_token, verify_password
 from .logging_setup import request_id
+from .ingestion import dispatch_or_fail, new_rebuild
+from .ingestion_routes import build_ingestion_router
 
 logger = logging.getLogger(__name__)
 
 
-def build_router(sessions, settings) -> APIRouter:
+def build_router(sessions, settings, enqueue) -> APIRouter:
     """为应用实例注入数据库与密钥，避免跨测试共享全局状态。"""
     router = APIRouter(prefix='/api')
 
@@ -231,12 +233,15 @@ def build_router(sessions, settings) -> APIRouter:
 
     @router.post('/knowledge', status_code=201)
     def create_knowledge(payload: schema.KnowledgeCreate, actor: User = Depends(current_user), session: Session = Depends(database)):
-        """创建真实文本单位，缺省授权为空且不返回正文。"""
+        """创建文本候选并后台构建索引，缺省授权为空且不提前发布正文。"""
         service.require(actor, 'knowledge:manage')
-        item = Knowledge(title=payload.title, content=payload.content, acl=service.build_grants(session, payload.acl))
+        item = Knowledge(title=payload.title, content='', category=payload.category,
+                         acl=service.build_grants(session, payload.acl))
         session.add(item)
-        commit(session, actor, '新增知识')
-        return service.knowledge_view(item, True)
+        session.flush()
+        task = new_rebuild(session, settings, actor.id, item, content=payload.content, title=payload.title)
+        dispatch_or_fail(session, task, enqueue)
+        return dict(service.knowledge_view(item, True), rebuild_task_id=task.id)
 
     @router.get('/knowledge/{record_id}')
     def read_knowledge(record_id: int, actor: User = Depends(current_user), session: Session = Depends(database)):
@@ -248,12 +253,18 @@ def build_router(sessions, settings) -> APIRouter:
 
     @router.patch('/knowledge/{record_id}')
     def update_knowledge(record_id: int, payload: schema.KnowledgeUpdate, actor: User = Depends(current_user), session: Session = Depends(database)):
-        """管理者可替换标题或正文，但响应不隐式公开旧正文。"""
+        """正文或标题编辑构建新版本，成功前保持旧活动正文可读。"""
         service.require(actor, 'knowledge:manage')
         item = service.get_record(session, Knowledge, record_id, True)
-        for key, value in service.patch_values(payload).items():
-            setattr(item, key, value)
-        commit(session, actor, '修改知识')
+        values = service.patch_values(payload)
+        for key in ('is_active', 'category'):
+            if key in values:
+                setattr(item, key, values[key])
+        if 'title' in values or 'content' in values:
+            task = new_rebuild(session, settings, actor.id, item, content=values.get('content'), title=values.get('title'))
+            dispatch_or_fail(session, task, enqueue)
+            return dict(service.knowledge_view(item, True), rebuild_task_id=task.id)
+        commit(session, actor, '修改知识状态或分类')
         return service.knowledge_view(item, True)
 
     @router.put('/knowledge/{record_id}/acl')
@@ -275,4 +286,5 @@ def build_router(sessions, settings) -> APIRouter:
         commit(session, actor, '删除知识')
         return Response(status_code=204)
 
+    router.include_router(build_ingestion_router(settings, database, current_user, enqueue))
     return router
