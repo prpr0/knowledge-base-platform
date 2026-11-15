@@ -2,9 +2,9 @@
 
 ## 交付状态与边界
 
-本项目面向中文技术支持与操作知识库，依据工作区只读需求 `D:/Project/PycharmProject/real/2.9.md`，并与 `real/4.1.md` 的生成模型能力目标衔接。当前已实施阶段1组织与权限：真实FastAPI登录/组织/RBAC、SQLAlchemy与Alembic迁移、四维ACL文本知识读取及配套Vue控制台。依赖安装本地，正式PostgreSQL16位于虚拟机，通过SSH隧道连接；不使用本机Docker数据库。阶段2至7、文件/切片/检索/问答/FAQ/运营及微调模型联调仍是后续设计，不能视为已实现或已验收。
+本项目面向中文技术支持与操作知识库，依据工作区只读需求 `D:/Project/PycharmProject/real/2.9.md`，并与 `real/4.1.md` 的生成模型能力目标衔接。当前已实施阶段1组织权限、阶段2多格式导入/生命周期及阶段3真实混合检索基础：本地FastAPI/Vue/Celery、真实Qwen tokenizer切片/BGE嵌入/重排、虚拟机PostgreSQL16+pgvector/Redis、候选原子发布、进度重试和鉴权下载。问答流、多轮、FAQ/缺口、运营与微调生成服务联调继续后续实施，不把当前检索片段展示当成最终问答完成。
 
-最终生成模型必须是 `knowledge-model-finetuning` 交付的 `kb-grounded-qwen3-4b-v1`，基座对照不算完成。嵌入和重排模型不在本次微调范围。Python已按阶段1真实需要声明和锁定依赖；本阶段先运行行为红测再实现，实际验证记录在任务进度。初始化src包仍只含中文模块说明，业务入口位于backend.app。
+最终生成模型必须是 `knowledge-model-finetuning` 交付的 `kb-grounded-qwen3-4b-v1`，基座对照不算完成。嵌入和重排模型保持预训练，不进行训练；已按授权将tokenizer/BGE资源下载本地并记录revision/hash。真实开发按TDD验证行为，实际证据在工作区任务记录；业务入口位于backend.app，初始化src包保留说明。
 
 ## 需求覆盖表
 
@@ -32,7 +32,7 @@
 | 文档解析 | pdfplumber、python-docx、markdown-it-py、TXT解码；旧DOC用隔离LibreOffice转DOCX | 提取正文、标题、页码、表格与定位；异常必须显式失败 |
 | 检索模型 | BAAI/bge-m3（MIT）；BAAI/bge-reranker-v2-m3（Apache 2.0） | 固定嵌入与重排，不进行训练；真正下载时复核许可、revision和维度 |
 | 生成服务 | 独立微调模型服务，正式vLLM，本地量化演示llama.cpp | 模型由微调项目发布；通过OpenAI兼容接口连接，不能静默替换成基座 |
-| 部署与文件 | Docker Compose组织前端/API/worker/PostgreSQL/Redis；GPU推理服务独立 | 原文件保存在挂载卷，只能经鉴权下载接口访问，不公开静态目录；当前不生成不能运行的Compose或前端空壳 |
+| 部署与文件 | 本地前端/API/worker；虚拟机独立PostgreSQL16+pgvector/Redis；生成推理服务独立 | 依赖/模型下载本地，数据库经SSH访问VM回环端口；原文件在本地数据目录或后续挂载卷，仅鉴权下载，不公开静态目录；不部署占位Compose |
 
 ```mermaid
 flowchart TD
@@ -166,7 +166,7 @@ PV按有效问答请求计数，UV在同一时间窗按用户去重；有效请�
 | `/metrics`、`/audits` | 指标作用域与审计分离，受限候选只由独立审计权限访问 |
 | `/settings/model` | 系统管理员管理配置和发布版本；API密钥写入后不回显，读取只返回是否已配置 |
 
-后续目录设计：`backend/`含API、迁移、组织/知识/ACL/检索/问答/FAQ/缺口/运营与Celery任务；`frontend/`含上述页面、权限选择器、SSE及安全Markdown；`deploy/`含可运行Compose、挂载卷、独立logging.yaml及模型服务说明；`tests/`含API权限/版本/FAQ回归、解析样例、流协议及浏览器场景。它们是将来结构，当前未创建，不生成空业务占位文件。各阶段先写能暴露消费者行为错误的最小失败测试，依赖安装另行获授权，不用伪模型替代最终验收。
+目录职责：`backend/`包含已实现API、迁移、组织/知识/ACL、解析索引、检索与Celery导入；问答/FAQ/缺口/运营继续后续实施。`frontend/`包含现有组织、知识、导入、检索页面与权限选择器，后续再加入SSE和安全Markdown。`deploy/`已有独立logging.yaml，未来按本地应用/虚拟机数据服务拓扑补部署材料，不生成不能运行的占位配置。`tests/`包含权限、解析、版本发布、上传重试与前端UUID回归。各阶段先失败测试再实现，不使用伪模型替代最终验收。
 
 ## 技术支持演示设计
 
@@ -245,4 +245,4 @@ user 内容采用同一结构（尖括号内容表示运行时填充值，不是
 - [FlagEmbedding官方仓库](https://github.com/FlagOpen/FlagEmbedding)：BGE-M3多语言嵌入及重排能力；[bge-m3模型页](https://huggingface.co/BAAI/bge-m3)与[bge-reranker-v2-m3模型页](https://huggingface.co/BAAI/bge-reranker-v2-m3)许可前期通过搜索核实，下载时复核。
 - [Kubernetes中文官方文档](https://kubernetes.io/zh-cn/docs/home/)提示译文可能过时，官网CC BY 4.0前期经官方站点搜索核实；[Python 3.11许可](https://docs.python.org/zh-cn/3.11/license.html)说明PSF及示例代码0BSD。
 
-上述官方能力/许可说明、本文项目设计值与实测须区分：切片512/64、召回50/50、RRF60、最多8片、FAQ7天5次均为后续项目设计值；检索阈值、模型质量门槛、训练资源预算、毫秒级FAQ、训练提升与推理兼容性均未实测。阶段1仅验证组织、身份、功能权限和真实文本单位ACL、虚拟机数据库迁移及本地控制台，不声称全平台、性能、训练或微调模型联调通过。
+官方能力、项目设计值与实测须区分：512/64切片、50/50召回、RRF60与最多8片已落到实际代码，已使用真实tokenizer、BGE及虚拟机pgvector/全文验证；FAQ7天5次、低证据阈值、生成质量门槛及训练预算仍为后续设计。已验证阶段1/2及检索基础的真实行为，未声称生产性能、训练提升或最终微调模型联调通过。原生目录选择器的自动化未成功，目录路径API与普通批量上传已真实验证。

@@ -55,7 +55,7 @@ def test_last_admin_role_protected(api):
     assert api['client'].patch(path, headers=api['admin'], json={"permissions": []}).status_code == 409
     assert api['client'].delete(path, headers=api['admin']).status_code == 409
 
-def test_knowledge_default_deny_and_explicit_acl(api):
+def test_knowledge_default_deny_and_explicit_acl(api, publish_knowledge):
     """管理权限可建知识但不隐式拥有正文读取权。"""
     client = api['client']
     response = client.post('/api/knowledge', headers=api['admin'], json={"title": "测试资料", "content": "不能默认公开的内容"})
@@ -63,6 +63,7 @@ def test_knowledge_default_deny_and_explicit_acl(api):
     item = response.json()
     assert 'content' not in item
     path = f'/api/knowledge/{item["id"]}'
+    publish_knowledge(item['id'])
     assert client.get(path, headers=api['admin']).status_code == 403
     assert client.get(path, headers=api['reader']).status_code == 403
     assert client.get('/api/knowledge', headers=api['reader']).json() == []
@@ -70,11 +71,12 @@ def test_knowledge_default_deny_and_explicit_acl(api):
     assert client.get(path, headers=api['reader']).json()['content'] == '不能默认公开的内容'
     assert client.get('/api/knowledge/manage', headers=api['reader']).status_code == 403
 
-def test_department_or_acl_and_immediate_revoke(api):
+def test_department_or_acl_and_immediate_revoke(api, publish_knowledge):
     """部门OR个人允许，直属部门变更与撤权立即影响同一令牌。"""
     client, ids = api['client'], api['ids']
     record = client.post('/api/knowledge', headers=api['admin'], json={"title": "运维", "content": "运维正文", "acl": [{"type": "department", "entity_id": ids['parent']}, {"type": "user", "entity_id": ids['reader']}]}).json()
     path = f'/api/knowledge/{record["id"]}'
+    publish_knowledge(record['id'])
     assert client.get(path, headers=api['reader']).status_code == 200
     assert client.put(path + '/acl', headers=api['admin'], json={"acl": [{"type": "department", "entity_id": ids['parent']}]}).status_code == 200
     assert client.get(path, headers=api['reader']).status_code == 403
