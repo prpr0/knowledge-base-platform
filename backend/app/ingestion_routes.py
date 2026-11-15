@@ -37,9 +37,12 @@ def build_ingestion_router(settings, database, current_user, enqueue) -> APIRout
 
     @router.post('/imports', status_code=202)
     def create_import(files: list[UploadFile] = File(...), paths: str = Form(...), acl: str = Form('[]'), category: str = Form('未分类'),
-                      actor: User = Depends(current_user), session: Session = Depends(database)):
+                      supplement_task_id: int | None = Form(None, gt=0), actor: User = Depends(current_user), session: Session = Depends(database)):
         """持久化批量上传后发真实队列消息，不把上传完成当作导入成功。"""
         require(actor, 'knowledge:manage')
+        if supplement_task_id is not None:
+            from .operations import check_supplement_task
+            check_supplement_task(session, actor, supplement_task_id)
         try:
             relative_paths = TypeAdapter(list[str]).validate_json(paths)
             grants = TypeAdapter(list[ACLGrant]).validate_json(acl)
@@ -54,6 +57,7 @@ def build_ingestion_router(settings, database, current_user, enqueue) -> APIRout
             task = new_import(session, settings, actor.id, list(zip(relative_paths, [file.file for file in files])), grants, category)
         except DocumentError as error:
             raise HTTPException(422, str(error)) from None
+        task.supplement_task_id = supplement_task_id
         dispatch_or_fail(session, task, enqueue)
         return task_view(task)
 

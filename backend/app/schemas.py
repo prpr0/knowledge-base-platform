@@ -9,6 +9,12 @@ PERMISSIONS = [
     {"code": "role:manage", "label": "维护角色权限", "kind": "button", "parent": "organization:read"},
     {"code": "knowledge:read", "label": "知识读取", "kind": "menu", "parent": None},
     {"code": "knowledge:manage", "label": "维护知识与ACL", "kind": "button", "parent": "knowledge:read"},
+    {"code": "chat:ask", "label": "智能问答", "kind": "menu", "parent": None},
+    {"code": "faq:manage", "label": "FAQ审核发布", "kind": "menu", "parent": None},
+    {"code": "gap:manage", "label": "知识缺口", "kind": "menu", "parent": None},
+    {"code": "metrics:read", "label": "运营指标", "kind": "menu", "parent": None},
+    {"code": "audit:read", "label": "独立审计", "kind": "menu", "parent": None},
+    {"code": "model:manage", "label": "模型配置", "kind": "menu", "parent": None},
 ]
 PERMISSION_CODES = frozenset(item["code"] for item in PERMISSIONS)
 

@@ -11,11 +11,15 @@ from .security import decode_token, hash_password, issue_token, verify_password
 from .logging_setup import request_id
 from .ingestion import dispatch_or_fail, new_rebuild
 from .ingestion_routes import build_ingestion_router
+from .evidence import invalidate_faqs
+from .chat_routes import build_chat_router
+from .operations_routes import build_operations_router
+from .task_queue import enqueue_operations
 
 logger = logging.getLogger(__name__)
 
 
-def build_router(sessions, settings, enqueue) -> APIRouter:
+def build_router(sessions, settings, enqueue, enqueue_ops=None) -> APIRouter:
     """为应用实例注入数据库与密钥，避免跨测试共享全局状态。"""
     router = APIRouter(prefix='/api')
 
@@ -260,6 +264,8 @@ def build_router(sessions, settings, enqueue) -> APIRouter:
         for key in ('is_active', 'category'):
             if key in values:
                 setattr(item, key, values[key])
+        if values.get('is_active') is False:
+            invalidate_faqs(session, item.id)
         if 'title' in values or 'content' in values:
             task = new_rebuild(session, settings, actor.id, item, content=values.get('content'), title=values.get('title'))
             dispatch_or_fail(session, task, enqueue)
@@ -274,6 +280,7 @@ def build_router(sessions, settings, enqueue) -> APIRouter:
         item = service.get_record(session, Knowledge, record_id, True)
         item.acl = service.build_grants(session, payload.acl)
         item.acl_version += 1
+        invalidate_faqs(session, item.id)
         commit(session, actor, '修改知识ACL')
         return service.knowledge_view(item, True)
 
@@ -282,9 +289,12 @@ def build_router(sessions, settings, enqueue) -> APIRouter:
         """事务删除知识及其授权，旧读取入口返回不存在。"""
         service.require(actor, 'knowledge:manage')
         item = service.get_record(session, Knowledge, record_id, True)
+        invalidate_faqs(session, item.id)
         session.delete(item)
         commit(session, actor, '删除知识')
         return Response(status_code=204)
 
     router.include_router(build_ingestion_router(settings, database, current_user, enqueue))
+    router.include_router(build_chat_router(settings, database, current_user, sessions))
+    router.include_router(build_operations_router(settings, database, current_user, enqueue_ops or (lambda kind, identifier: enqueue_operations(settings, kind, identifier))))
     return router

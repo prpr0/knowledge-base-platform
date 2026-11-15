@@ -15,6 +15,12 @@ const menu = computed(() => [
   { path: '/knowledge', title: '知识与授权', mark: '05', show: session.canAny(['knowledge:read', 'knowledge:manage']) },
   { path: '/imports', title: '知识导入中心', mark: '06', show: session.can('knowledge:manage') },
   { path: '/search', title: '知识检索', mark: '07', show: session.can('knowledge:read') },
+  { path: '/chat', title: 'AI智能问答', mark: '08', show: session.can('chat:ask') },
+  { path: '/faq', title: 'FAQ挖掘审核', mark: '09', show: session.can('faq:manage') },
+  { path: '/gaps', title: '知识缺口', mark: '10', show: session.can('gap:manage') },
+  { path: '/metrics', title: '运营看板', mark: '11', show: session.can('metrics:read') },
+  { path: '/audits', title: '安全审计', mark: '12', show: session.can('audit:read') },
+  { path: '/settings/model', title: '模型设置', mark: '13', show: session.can('model:manage') },
 ].filter((item) => item.show))
 
 /** 失效或主动退出均返回登录页，不保留业务组件内的正文。 */

@@ -15,6 +15,12 @@ const router = createRouter({
     { path: '/knowledge', component: () => import('./pages/KnowledgePage.vue'), meta: { title: '知识与授权', permissions: ['knowledge:read', 'knowledge:manage'] } },
     { path: '/imports', component: () => import('./pages/ImportsPage.vue'), meta: { title: '知识导入中心', permissions: ['knowledge:manage'] } },
     { path: '/search', component: () => import('./pages/SearchPage.vue'), meta: { title: '知识检索', permissions: ['knowledge:read'] } },
+    { path: '/chat', component: () => import('./pages/ChatPage.vue'), meta: { title: 'AI智能问答', permissions: ['chat:ask'] } },
+    { path: '/faq', component: () => import('./pages/FaqPage.vue'), meta: { title: 'FAQ审核', permissions: ['faq:manage'] } },
+    { path: '/gaps', component: () => import('./pages/GapsPage.vue'), meta: { title: '知识缺口', permissions: ['gap:manage'] } },
+    { path: '/metrics', component: () => import('./pages/MetricsPage.vue'), meta: { title: '运营看板', permissions: ['metrics:read'] } },
+    { path: '/audits', component: () => import('./pages/AuditPage.vue'), meta: { title: '安全审计', permissions: ['audit:read'] } },
+    { path: '/settings/model', component: () => import('./pages/ModelPage.vue'), meta: { title: '模型设置', permissions: ['model:manage'] } },
     { path: '/:pathMatch(.*)*', redirect: '/' },
   ],
 })

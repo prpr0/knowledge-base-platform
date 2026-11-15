@@ -19,7 +19,7 @@ def refresh_identity(session, actor: User) -> User:
     return current
 
 
-def hybrid_search(session, settings, actor: User, query: str, limit: int = 8) -> dict:
+def hybrid_search(session, settings, actor: User, query: str, limit: int = 8, audit: dict | None = None) -> dict:
     """各召回50条、RRF60、先ACL后真实重排，仅输出获准活动来源。"""
     import jieba
     actor = refresh_identity(session, actor)
@@ -48,6 +48,10 @@ def hybrid_search(session, settings, actor: User, query: str, limit: int = 8) ->
             allowed.append((chunk, knowledge))
         else:
             restricted = True
+    if audit is not None:
+        audit.update(candidates=sorted({value[1].id for value in fused.values()}),
+                     allowed=sorted({knowledge.id for chunk, knowledge in allowed}),
+                     blocked=sorted({value[1].id for value in fused.values() if not readable(actor, value[1])}))
     if not allowed:
         return {'items': [], 'restricted': restricted, 'message': RESTRICTED_MESSAGE + '。无法据可用资料作答' if restricted else '未检索到可用资料'}
     scores = runtime.rerank(query, [chunk.content for chunk, knowledge in allowed])

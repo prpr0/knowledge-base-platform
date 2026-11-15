@@ -1,11 +1,11 @@
-"""组织、账号、知识版本、索引切片及文档导入任务的持久化实体。"""
+"""保存组织、知识导入、会话、模型配置及问答运营的持久化实体。"""
 
-from datetime import datetime
+from datetime import date, datetime
 from uuid import uuid4
 
 from pgvector.sqlalchemy import Vector
 from sqlalchemy import (
-    JSON, Boolean, CheckConstraint, Column, DateTime, ForeignKey, Index, Integer,
+    JSON, Boolean, CheckConstraint, Column, Date, DateTime, Float, ForeignKey, Index, Integer,
     String, Table, Text, UniqueConstraint, func, text,
 )
 from sqlalchemy.dialects.postgresql import TSVECTOR
@@ -13,7 +13,7 @@ from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 
 
 def _new_uuid() -> str:
-    """为每个导入任务及子项独立生成字符串形式的唯一标识。"""
+    """为导入任务、子项及挖掘任务独立生成字符串形式的唯一标识。"""
     return str(uuid4())
 
 
@@ -191,6 +191,12 @@ class ImportTask(Base):
     requester_id: Mapped[int | None] = mapped_column(
         ForeignKey("users.id", ondelete="SET NULL"), nullable=True
     )
+    supplement_task_id: Mapped[int | None] = mapped_column(
+        ForeignKey(
+            "supplement_tasks.id", ondelete="SET NULL",
+            name="fk_import_tasks_supplement_task_id",
+        ), nullable=True,
+    )
     category: Mapped[str] = mapped_column(
         String(255), default="未分类", server_default=text("'未分类'")
     )
@@ -236,3 +242,275 @@ class ImportTaskItem(Base):
     error: Mapped[str | None] = mapped_column(Text, nullable=True)
     attempt: Mapped[int] = mapped_column(Integer, default=1, server_default=text("1"))
     task: Mapped[ImportTask] = relationship(back_populates="items")
+
+
+class Conversation(Base):
+    """保存归属单个用户的会话及其可编辑标题。"""
+
+    __tablename__ = "conversations"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"))
+    title: Mapped[str] = mapped_column(
+        String(200), default="新会话", server_default=text("'新会话'")
+    )
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=func.now(), server_default=func.now()
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=func.now(), server_default=func.now(), onupdate=func.now()
+    )
+
+
+class Message(Base):
+    """保存消息正文、处理状态及需在读取时重新鉴权的引用快照。"""
+
+    __tablename__ = "messages"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    conversation_id: Mapped[int] = mapped_column(
+        ForeignKey("conversations.id", ondelete="CASCADE")
+    )
+    role: Mapped[str] = mapped_column(String(32))
+    content: Mapped[str] = mapped_column(Text, default="", server_default=text("''"))
+    status: Mapped[str] = mapped_column(
+        String(32), default="complete", server_default=text("'complete'")
+    )
+    citations: Mapped[list[dict]] = mapped_column(JSON, default=list, server_default=text("'[]'"))
+    request_id: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    model_version: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    source_mode: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=func.now(), server_default=func.now()
+    )
+
+
+class ModelConfiguration(Base):
+    """保存模型服务配置、加密密钥及真实发布与校准验证状态。"""
+
+    __tablename__ = "model_configurations"
+
+    id: Mapped[int] = mapped_column(primary_key=True, default=1, server_default=text("1"))
+    base_url: Mapped[str] = mapped_column(String(512), default="", server_default=text("''"))
+    model_name: Mapped[str] = mapped_column(
+        String(128), default="kb-grounded-qwen3-4b-v1",
+        server_default=text("'kb-grounded-qwen3-4b-v1'"),
+    )
+    api_key_ciphertext: Mapped[str | None] = mapped_column(Text, nullable=True)
+    release_manifest_path: Mapped[str | None] = mapped_column(Text, nullable=True)
+    release_manifest_hash: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    release_version: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    release_verified: Mapped[bool] = mapped_column(
+        Boolean, default=False, server_default=text("false")
+    )
+    calibration_manifest_path: Mapped[str | None] = mapped_column(Text, nullable=True)
+    score_threshold: Mapped[float | None] = mapped_column(Float, nullable=True)
+    calibration_verified: Mapped[bool] = mapped_column(
+        Boolean, default=False, server_default=text("false")
+    )
+    updated_by: Mapped[int | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=func.now(), server_default=func.now(), onupdate=func.now()
+    )
+
+
+class FAQCandidate(Base):
+    """保存语义聚类候选、部门快照及人工审核决策。"""
+
+    __tablename__ = "faq_candidates"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    question: Mapped[str] = mapped_column(Text)
+    question_key: Mapped[str] = mapped_column(String(64))
+    answer: Mapped[str] = mapped_column(Text)
+    aliases: Mapped[list[str]] = mapped_column(JSON, default=list, server_default=text("'[]'"))
+    sources: Mapped[list[dict]] = mapped_column(JSON, default=list, server_default=text("'[]'"))
+    count: Mapped[int] = mapped_column(Integer)
+    department_id: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    confidence: Mapped[float] = mapped_column(Float)
+    status: Mapped[str] = mapped_column(
+        String(32), default="pending", server_default=text("'pending'")
+    )
+    created_by_id: Mapped[int | None] = mapped_column(ForeignKey('users.id', ondelete='SET NULL'), nullable=True)
+    reviewer_id: Mapped[int | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=func.now(), server_default=func.now()
+    )
+    reviewed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    cluster_key: Mapped[str] = mapped_column(String(64), unique=True)
+
+
+class FAQRelease(Base):
+    """保存经人工发布的答案版本及需要逐一鉴权的完整来源。"""
+
+    __tablename__ = "faq_releases"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    candidate_id: Mapped[int | None] = mapped_column(
+        ForeignKey("faq_candidates.id", ondelete="SET NULL"), nullable=True
+    )
+    question: Mapped[str] = mapped_column(Text)
+    question_key: Mapped[str] = mapped_column(String(64), index=True)
+    answer: Mapped[str] = mapped_column(Text)
+    aliases: Mapped[list[str]] = mapped_column(JSON, default=list, server_default=text("'[]'"))
+    version: Mapped[int] = mapped_column(Integer, default=1, server_default=text("1"))
+    enabled: Mapped[bool] = mapped_column(Boolean, default=True, server_default=text("true"))
+    reviewer_id: Mapped[int | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=func.now(), server_default=func.now()
+    )
+    sources: Mapped[list["FAQSource"]] = relationship(
+        back_populates="faq", cascade="all, delete-orphan", lazy="selectin", passive_deletes=True
+    )
+
+
+class FAQSource(Base):
+    """保留全部发布来源，原知识删除后以空外键阻止残缺来源通过鉴权。"""
+
+    __tablename__ = "faq_sources"
+    __table_args__ = (UniqueConstraint("faq_id", "label", name="uq_faq_sources_label"),)
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    faq_id: Mapped[int] = mapped_column(ForeignKey("faq_releases.id", ondelete="CASCADE"))
+    knowledge_id: Mapped[int | None] = mapped_column(
+        ForeignKey("knowledge.id", ondelete="SET NULL"), nullable=True
+    )
+    version_id: Mapped[int | None] = mapped_column(
+        ForeignKey("knowledge_versions.id", ondelete="SET NULL"), nullable=True
+    )
+    chunk_id: Mapped[int | None] = mapped_column(
+        ForeignKey("chunks.id", ondelete="SET NULL"), nullable=True
+    )
+    label: Mapped[str] = mapped_column(String(16))
+    faq: Mapped[FAQRelease] = relationship(back_populates="sources")
+
+
+class QAAudit(Base):
+    """以唯一请求标识保存问答计数、权限决策及真实模型消耗审计。"""
+
+    __tablename__ = "qa_audits"
+
+    request_id: Mapped[str] = mapped_column(String(32), primary_key=True)
+    conversation_id: Mapped[int | None] = mapped_column(
+        ForeignKey("conversations.id", ondelete="SET NULL"), nullable=True
+    )
+    message_id: Mapped[int | None] = mapped_column(
+        ForeignKey("messages.id", ondelete="SET NULL"), nullable=True
+    )
+    user_id: Mapped[int | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
+    department_id: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    question: Mapped[str] = mapped_column(Text)
+    candidates: Mapped[list[int]] = mapped_column(JSON, default=list, server_default=text("'[]'"))
+    allowed: Mapped[list[int]] = mapped_column(JSON, default=list, server_default=text("'[]'"))
+    blocked: Mapped[list[int]] = mapped_column(JSON, default=list, server_default=text("'[]'"))
+    sources: Mapped[list[dict]] = mapped_column(JSON, default=list, server_default=text("'[]'"))
+    token_usage: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+    latency_ms: Mapped[float | None] = mapped_column(Float, nullable=True)
+    status: Mapped[str] = mapped_column(String(32))
+    source_mode: Mapped[str] = mapped_column(String(32))
+    faq_release_id: Mapped[int | None] = mapped_column(
+        ForeignKey("faq_releases.id", ondelete="SET NULL"), nullable=True
+    )
+    valid: Mapped[bool] = mapped_column(Boolean, default=True, server_default=text("true"))
+    model_called: Mapped[bool] = mapped_column(Boolean, default=False, server_default=text("false"))
+    model_version: Mapped[str | None] = mapped_column(String(128), nullable=True)
+    error_code: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=func.now(), server_default=func.now()
+    )
+
+
+class KnowledgeGap(Base):
+    """按问题及直属部门快照聚合缺口并跟踪知识补充结果。"""
+
+    __tablename__ = "knowledge_gaps"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    question: Mapped[str] = mapped_column(Text)
+    question_key: Mapped[str] = mapped_column(String(64))
+    scope_key: Mapped[str] = mapped_column(String(64), unique=True)
+    department_id: Mapped[int | None] = mapped_column(Integer, nullable=True)
+    user_id: Mapped[int | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
+    frequency: Mapped[int] = mapped_column(Integer, default=1, server_default=text("1"))
+    first_seen: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=func.now(), server_default=func.now()
+    )
+    last_seen: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=func.now(), server_default=func.now(), onupdate=func.now()
+    )
+    highest_score: Mapped[float | None] = mapped_column(Float, nullable=True)
+    suggested_category: Mapped[str] = mapped_column(
+        String(255), default="未分类", server_default=text("'未分类'")
+    )
+    status: Mapped[str] = mapped_column(String(32), default="open", server_default=text("'open'"))
+
+
+class SupplementTask(Base):
+    """保存缺口补充任务、指派关系及成功导入的知识标识。"""
+
+    __tablename__ = "supplement_tasks"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    gap_id: Mapped[int] = mapped_column(ForeignKey("knowledge_gaps.id", ondelete="CASCADE"))
+    title: Mapped[str] = mapped_column(String(200))
+    assigned_to: Mapped[int | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
+    created_by_id: Mapped[int | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
+    status: Mapped[str] = mapped_column(String(32), default="open", server_default=text("'open'"))
+    knowledge_ids: Mapped[list[int]] = mapped_column(
+        JSON, default=list, server_default=text("'[]'")
+    )
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=func.now(), server_default=func.now()
+    )
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+
+
+class MiningRun(Base):
+    """保存真实语义挖掘任务的状态、候选数量和失败原因。"""
+
+    __tablename__ = "mining_runs"
+
+    id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_new_uuid)
+    requested_by: Mapped[int | None] = mapped_column(
+        ForeignKey("users.id", ondelete="SET NULL"), nullable=True
+    )
+    status: Mapped[str] = mapped_column(String(32), default="queued", server_default=text("'queued'"))
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=func.now(), server_default=func.now()
+    )
+    finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    error: Mapped[str | None] = mapped_column(Text, nullable=True)
+    count: Mapped[int] = mapped_column(Integer, default=0, server_default=text("0"))
+
+
+class MetricSnapshot(Base):
+    """按UTC日期保存不包含受限标题的纯数值运营快照。"""
+
+    __tablename__ = "metric_snapshots"
+
+    day: Mapped[date] = mapped_column(Date, primary_key=True)
+    total_requests: Mapped[int] = mapped_column(Integer, default=0, server_default=text("0"))
+    uv: Mapped[int] = mapped_column(Integer, default=0, server_default=text("0"))
+    faq_hits: Mapped[int] = mapped_column(Integer, default=0, server_default=text("0"))
+    covered: Mapped[int] = mapped_column(Integer, default=0, server_default=text("0"))
+    permission_blocked: Mapped[int] = mapped_column(Integer, default=0, server_default=text("0"))
+    token_total: Mapped[int] = mapped_column(Integer, default=0, server_default=text("0"))
+    token_unknown: Mapped[int] = mapped_column(Integer, default=0, server_default=text("0"))
+    latencies: Mapped[list[float]] = mapped_column(JSON, default=list, server_default=text("'[]'"))
+    as_of: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), default=func.now(), server_default=func.now(), onupdate=func.now()
+    )
