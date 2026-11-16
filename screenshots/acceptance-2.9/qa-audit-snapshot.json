@@ -1,0 +1,3511 @@
+[
+  {
+    "request_id": "4ea057f519d7445d857b79ed069d70e0",
+    "conversation_id": 1,
+    "message_id": 2,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "海外直邮保税仓清关延误应如何处理？",
+    "candidates": [],
+    "allowed": [],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 13909.058100543916,
+    "status": "complete",
+    "source_mode": "refusal",
+    "faq_release_id": null,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 06:27:30.393613+00:00",
+    "sources": []
+  },
+  {
+    "request_id": "43c4de382ff447b3b122b39f1fa996f7",
+    "conversation_id": 1,
+    "message_id": 4,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "海外直邮保税仓清关延误应如何处理？",
+    "candidates": [],
+    "allowed": [],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 409.4275999814272,
+    "status": "complete",
+    "source_mode": "refusal",
+    "faq_release_id": null,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 06:29:15.323953+00:00",
+    "sources": []
+  },
+  {
+    "request_id": "f7b951041630402da82def32110537aa",
+    "conversation_id": 1,
+    "message_id": 6,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+    "candidates": [],
+    "allowed": [],
+    "blocked": [],
+    "token_usage": null,
+    "latency_ms": 182.99599923193455,
+    "status": "cancelled",
+    "source_mode": "pending",
+    "faq_release_id": null,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": "client_cancelled",
+    "created_at": "2026-11-16 06:36:24.813007+00:00",
+    "sources": []
+  },
+  {
+    "request_id": "6b3d46d389564a4ca403eed51760f802",
+    "conversation_id": 3,
+    "message_id": 8,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+    "candidates": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [
+      2,
+      4
+    ],
+    "token_usage": null,
+    "latency_ms": 194622.59840033948,
+    "status": "cancelled",
+    "source_mode": "external_api",
+    "faq_release_id": null,
+    "valid": true,
+    "model_called": true,
+    "model_version": "deepseek-flash",
+    "error_code": "client_cancelled",
+    "created_at": "2026-11-16 06:37:48.186970+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "d9ec1a508b8d421baa6252b66be3862a",
+    "conversation_id": 4,
+    "message_id": 10,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+    "candidates": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [
+      2,
+      4
+    ],
+    "token_usage": null,
+    "latency_ms": 194268.63790024072,
+    "status": "cancelled",
+    "source_mode": "external_api",
+    "faq_release_id": null,
+    "valid": true,
+    "model_called": true,
+    "model_version": "deepseek-flash",
+    "error_code": "client_cancelled",
+    "created_at": "2026-11-16 06:37:48.420671+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "79ed6b578f0345a2b2ea51078fe53c95",
+    "conversation_id": 2,
+    "message_id": 12,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+    "candidates": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [
+      2,
+      4,
+      5
+    ],
+    "token_usage": {
+      "prompt_tokens": 760,
+      "completion_tokens": 291,
+      "total_tokens": 1051,
+      "prompt_tokens_details": {
+        "cached_tokens": 512
+      },
+      "prompt_cache_hit_tokens": 512,
+      "prompt_cache_miss_tokens": 248
+    },
+    "latency_ms": 198645.13399917632,
+    "status": "complete",
+    "source_mode": "external_api",
+    "faq_release_id": null,
+    "valid": true,
+    "model_called": true,
+    "model_version": "deepseek-flash",
+    "error_code": null,
+    "created_at": "2026-11-16 06:40:04.238796+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "101a095b141a4793bfa23a5f9836de30",
+    "conversation_id": 5,
+    "message_id": 14,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+    "candidates": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [
+      2,
+      4
+    ],
+    "token_usage": {
+      "prompt_tokens": 760,
+      "completion_tokens": 282,
+      "total_tokens": 1042,
+      "prompt_tokens_details": {
+        "cached_tokens": 512
+      },
+      "prompt_cache_hit_tokens": 512,
+      "prompt_cache_miss_tokens": 248
+    },
+    "latency_ms": 315847.5705999881,
+    "status": "complete",
+    "source_mode": "external_api",
+    "faq_release_id": null,
+    "valid": true,
+    "model_called": true,
+    "model_version": "deepseek-flash",
+    "error_code": null,
+    "created_at": "2026-11-16 06:49:58.036800+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "856fa896cbc947cca3c29a2ae17eed72",
+    "conversation_id": 6,
+    "message_id": 16,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+    "candidates": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [
+      2,
+      4
+    ],
+    "token_usage": {
+      "prompt_tokens": 760,
+      "completion_tokens": 291,
+      "total_tokens": 1051,
+      "prompt_tokens_details": {
+        "cached_tokens": 512
+      },
+      "prompt_cache_hit_tokens": 512,
+      "prompt_cache_miss_tokens": 248
+    },
+    "latency_ms": 318270.4885005951,
+    "status": "complete",
+    "source_mode": "external_api",
+    "faq_release_id": null,
+    "valid": true,
+    "model_called": true,
+    "model_version": "deepseek-flash",
+    "error_code": null,
+    "created_at": "2026-11-16 06:49:58.199302+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "93cb24bc04a447a8b98a420efd4206f1",
+    "conversation_id": 7,
+    "message_id": 18,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+    "candidates": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [
+      2,
+      4
+    ],
+    "token_usage": {
+      "prompt_tokens": 760,
+      "completion_tokens": 291,
+      "total_tokens": 1051,
+      "prompt_tokens_details": {
+        "cached_tokens": 512
+      },
+      "prompt_cache_hit_tokens": 512,
+      "prompt_cache_miss_tokens": 248
+    },
+    "latency_ms": 322963.4221000597,
+    "status": "complete",
+    "source_mode": "external_api",
+    "faq_release_id": null,
+    "valid": true,
+    "model_called": true,
+    "model_version": "deepseek-flash",
+    "error_code": null,
+    "created_at": "2026-11-16 06:55:18.121149+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "719e86d6349741fdbba5bfa4829c5a51",
+    "conversation_id": 8,
+    "message_id": 20,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+    "candidates": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [
+      2,
+      4
+    ],
+    "token_usage": {
+      "prompt_tokens": 760,
+      "completion_tokens": 288,
+      "total_tokens": 1048,
+      "prompt_tokens_details": {
+        "cached_tokens": 512
+      },
+      "prompt_cache_hit_tokens": 512,
+      "prompt_cache_miss_tokens": 248
+    },
+    "latency_ms": 321587.2307997197,
+    "status": "complete",
+    "source_mode": "external_api",
+    "faq_release_id": null,
+    "valid": true,
+    "model_called": true,
+    "model_version": "deepseek-flash",
+    "error_code": null,
+    "created_at": "2026-11-16 06:55:18.284031+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "818309d902c345fe967548434e828fe6",
+    "conversation_id": 2,
+    "message_id": 22,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款？",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1202.6594001799822,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:04:41.049458+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "ba421b4b4ac946cfbe30372ad75ce36f",
+    "conversation_id": 9,
+    "message_id": 24,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款？",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1158.6205996572971,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:06:19.235670+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "22580faedcf24540b5395833d4a9297e",
+    "conversation_id": 10,
+    "message_id": 26,
+    "user_id": 4,
+    "department_id": 4,
+    "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 957.2569997981191,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:06:20.563676+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "55c6c94337d64bd78afbcfc251751d28",
+    "conversation_id": 11,
+    "message_id": 28,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1096.5976994484663,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:06:21.746632+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "35a96191896540e192f5de57e8f76471",
+    "conversation_id": 12,
+    "message_id": 30,
+    "user_id": 4,
+    "department_id": 4,
+    "question": "生鲜食品破损如何申请退款？",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1533.025600016117,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:06:23.134109+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "025a78ae30f042409acf89aab9eaa138",
+    "conversation_id": 13,
+    "message_id": 32,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1330.2160995081067,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:06:24.867366+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "6d3a9a32e18a472fb6bfee60716423ba",
+    "conversation_id": 14,
+    "message_id": 34,
+    "user_id": 4,
+    "department_id": 4,
+    "question": "生鲜食品破损如何申请退款",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1414.2646994441748,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:06:26.391182+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "5d7cd67de06b4054ba107494653a6268",
+    "conversation_id": 15,
+    "message_id": 36,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款？",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1304.300599731505,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:06:27.980517+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "d4bab0601930447ebdbc2d13362d6659",
+    "conversation_id": 16,
+    "message_id": 38,
+    "user_id": 4,
+    "department_id": 4,
+    "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1323.8515006378293,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:06:29.492067+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "dcd1a7f492934ed5a64c38fb6dd8d2c7",
+    "conversation_id": 17,
+    "message_id": 40,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1087.138299830258,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:06:30.991694+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "6363592c0b1b4ec281f101addb092a47",
+    "conversation_id": 18,
+    "message_id": 42,
+    "user_id": 4,
+    "department_id": 4,
+    "question": "生鲜食品破损如何申请退款？",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1274.3565002456307,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:06:32.408758+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "f06f4e87f0294a238b6767117ef5aacd",
+    "conversation_id": 19,
+    "message_id": 44,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1051.2315994128585,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:06:34.055545+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "e3fcb1c4771346f99cc2e5cc2c334f10",
+    "conversation_id": 20,
+    "message_id": 46,
+    "user_id": 4,
+    "department_id": 4,
+    "question": "生鲜食品破损如何申请退款",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1269.182799383998,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:06:35.593740+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "ee1464788159461baffd9c16c3a25c2e",
+    "conversation_id": 21,
+    "message_id": 48,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款？",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1180.625700391829,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:06:37.288747+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "6041d0a28fc346fcae4d8d798d9d38e9",
+    "conversation_id": 22,
+    "message_id": 50,
+    "user_id": 4,
+    "department_id": 4,
+    "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1277.0751994103193,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:06:38.784621+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "2d9435e0e52c4518a64d4d6f4103ddc9",
+    "conversation_id": 23,
+    "message_id": 52,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1376.8023001030087,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:06:40.473596+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "65f87ac285074ac38fb55fa5506aaa98",
+    "conversation_id": 24,
+    "message_id": 54,
+    "user_id": 4,
+    "department_id": 4,
+    "question": "生鲜食品破损如何申请退款？",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1279.3761994689703,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:06:42.162525+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "5761fa7a1b264545878e6951a4eb9d07",
+    "conversation_id": 25,
+    "message_id": 56,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1433.9493997395039,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:06:43.986153+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "56b0347ae2e1456d952fe9c85f24dec3",
+    "conversation_id": 26,
+    "message_id": 58,
+    "user_id": 4,
+    "department_id": 4,
+    "question": "生鲜食品破损如何申请退款",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1462.5818999484181,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:06:45.890677+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "f1417477994741729b9fdfc5bd472562",
+    "conversation_id": 27,
+    "message_id": 60,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款？",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1192.0892000198364,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:06:47.652975+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "d570fe38a5554bc3876328bdbb53109a",
+    "conversation_id": 28,
+    "message_id": 62,
+    "user_id": 4,
+    "department_id": 4,
+    "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1372.8061001747847,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:06:49.161060+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "6c1825d0d40e4d2f9bcad33fb5c81ba7",
+    "conversation_id": 29,
+    "message_id": 64,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1196.5716993436217,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:06:50.896715+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "587c5aaa6d894ded934fff7165ac0d30",
+    "conversation_id": 30,
+    "message_id": 66,
+    "user_id": 4,
+    "department_id": 4,
+    "question": "生鲜食品破损如何申请退款？",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1427.569500170648,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:06:52.455210+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "94ed4dca02564f70b4d829ffa4c1a052",
+    "conversation_id": 31,
+    "message_id": 68,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1415.9044995903969,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:06:54.213869+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "8021904521a04f4da77868a206eb7993",
+    "conversation_id": 32,
+    "message_id": 70,
+    "user_id": 4,
+    "department_id": 4,
+    "question": "生鲜食品破损如何申请退款",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1201.5990000218153,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:06:55.948228+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "4378f69a7c5e41f580bf8da000607615",
+    "conversation_id": 33,
+    "message_id": 72,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款？",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1050.5557004362345,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:06:57.510183+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "c172529360114741b27587f547b5dd89",
+    "conversation_id": 34,
+    "message_id": 74,
+    "user_id": 4,
+    "department_id": 4,
+    "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1234.6564996987581,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:06:59.016169+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "941804e5dd6941b78323a4e0b3787a8f",
+    "conversation_id": 35,
+    "message_id": 76,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1313.209700398147,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:07:00.666195+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "62cddf02e6c945238c921645924144ce",
+    "conversation_id": 36,
+    "message_id": 78,
+    "user_id": 4,
+    "department_id": 4,
+    "question": "生鲜食品破损如何申请退款？",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1256.5299002453685,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:07:02.357337+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "c67707d2b8ac4f72a7d6e09c7a915a75",
+    "conversation_id": 37,
+    "message_id": 80,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1255.92349935323,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:07:03.978951+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "2b3e30e1db6b4d219b6673f352b94295",
+    "conversation_id": 38,
+    "message_id": 82,
+    "user_id": 4,
+    "department_id": 4,
+    "question": "生鲜食品破损如何申请退款",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1134.7762001678348,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:07:05.615094+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "a975d5d7651f4caa818f25bb88f74e9f",
+    "conversation_id": 39,
+    "message_id": 84,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款？",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1225.2365993335843,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:07:07.169899+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "6b00aee1018741188ffcafc48b95b218",
+    "conversation_id": 40,
+    "message_id": 86,
+    "user_id": 4,
+    "department_id": 4,
+    "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1261.187900789082,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:07:08.817454+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "36f3bd5f7f5249cba3a95e3554a41d53",
+    "conversation_id": 41,
+    "message_id": 88,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1191.7179003357887,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:07:10.411863+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "d126454e69c24ac49055e0d9f02cc0eb",
+    "conversation_id": 42,
+    "message_id": 90,
+    "user_id": 4,
+    "department_id": 4,
+    "question": "生鲜食品破损如何申请退款？",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1242.9235000163317,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:07:12.073981+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "39e2fa23e1974cdbbb68d21d88b9833b",
+    "conversation_id": 43,
+    "message_id": 92,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1260.2049997076392,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:07:13.693053+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "e83857210cc94141be02825cce3843b8",
+    "conversation_id": 44,
+    "message_id": 94,
+    "user_id": 4,
+    "department_id": 4,
+    "question": "生鲜食品破损如何申请退款",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1343.5738999396563,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:07:15.369012+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "97cf3e833af04303b6ed9bcac55653fb",
+    "conversation_id": 45,
+    "message_id": 96,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款？",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1191.4855996146798,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:07:17.153819+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "18393a6545a749ea86dabf9884c0af1c",
+    "conversation_id": 46,
+    "message_id": 98,
+    "user_id": 4,
+    "department_id": 4,
+    "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1549.167800694704,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:07:18.754353+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "6e07650e127341bc92ecc446a03cd58d",
+    "conversation_id": 47,
+    "message_id": 100,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1259.1311996802688,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:07:20.606700+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "f23f52dd9ec645a1b03ee5d9868e451c",
+    "conversation_id": 48,
+    "message_id": 102,
+    "user_id": 4,
+    "department_id": 4,
+    "question": "生鲜食品破损如何申请退款？",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1160.9588004648685,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:07:22.216801+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "015f9794d02a4b76b98a39c45bd33d33",
+    "conversation_id": 49,
+    "message_id": 104,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1364.5476000383496,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:07:23.770349+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "15794023ed604109a0b41663ba726bf7",
+    "conversation_id": 50,
+    "message_id": 106,
+    "user_id": 4,
+    "department_id": 4,
+    "question": "生鲜食品破损如何申请退款",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1228.4934995695949,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:07:25.499164+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "19e7809f053944409cdfb1d7d6154865",
+    "conversation_id": 51,
+    "message_id": 108,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款？",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1196.4223999530077,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:07:27.088499+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "b2efdbe26aca415abd4010eeec96aa80",
+    "conversation_id": 52,
+    "message_id": 110,
+    "user_id": 4,
+    "department_id": 4,
+    "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1313.344399444759,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:07:28.662135+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "faf592a044f34cc9a263c659e7f82e75",
+    "conversation_id": 53,
+    "message_id": 112,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1648.5257996246219,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:07:30.346786+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "c65a8923c0e742fa8f99bf11e45639a4",
+    "conversation_id": 54,
+    "message_id": 114,
+    "user_id": 4,
+    "department_id": 4,
+    "question": "生鲜食品破损如何申请退款？",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1280.697399750352,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:07:32.386054+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "bde77346bc3c49cf89bd56a3b9c78622",
+    "conversation_id": 55,
+    "message_id": 116,
+    "user_id": 2,
+    "department_id": 3,
+    "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1165.3018994256854,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:07:34.043640+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  },
+  {
+    "request_id": "fcf36b2482664b95b6ba51013468b15d",
+    "conversation_id": 56,
+    "message_id": 118,
+    "user_id": 4,
+    "department_id": 4,
+    "question": "生鲜食品破损如何申请退款",
+    "candidates": [],
+    "allowed": [
+      1,
+      3
+    ],
+    "blocked": [],
+    "token_usage": {
+      "prompt_tokens": 0,
+      "completion_tokens": 0,
+      "total_tokens": 0
+    },
+    "latency_ms": 1194.7849001735449,
+    "status": "complete",
+    "source_mode": "faq",
+    "faq_release_id": 1,
+    "valid": true,
+    "model_called": false,
+    "model_version": null,
+    "error_code": null,
+    "created_at": "2026-11-16 07:07:35.632582+00:00",
+    "sources": [
+      {
+        "label": "S1",
+        "knowledge_id": 1,
+        "version_id": 1,
+        "chunk_id": 1
+      },
+      {
+        "label": "S2",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 6
+      },
+      {
+        "label": "S3",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 5
+      },
+      {
+        "label": "S4",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 4
+      },
+      {
+        "label": "S5",
+        "knowledge_id": 3,
+        "version_id": 3,
+        "chunk_id": 7
+      }
+    ]
+  }
+]

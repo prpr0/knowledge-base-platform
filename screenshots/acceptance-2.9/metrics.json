@@ -1,0 +1,98 @@
+{
+  "pv": 59,
+  "uv": 2,
+  "knowledge_count": 4,
+  "faq_hit_rate": 0.8305084745762712,
+  "coverage_rate": 0.9491525423728814,
+  "permission_block_rate": 0.11864406779661017,
+  "token_total": 5243,
+  "token_unknown_requests": 2,
+  "failures": 3,
+  "latency": {
+    "mean_ms": 32929.65380837983,
+    "p50_ms": 1269.182799383998,
+    "p95_ms": 316089.8623900488
+  },
+  "top_questions": [
+    {
+      "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+      "count": 9
+    },
+    {
+      "question": "生鲜食品破损如何申请退款？",
+      "count": 9
+    },
+    {
+      "question": "生鲜食品破损如何申请退款",
+      "count": 8
+    },
+    {
+      "question": "海外直邮保税仓清关延误应如何处理？",
+      "count": 2
+    }
+  ],
+  "top_knowledge": [
+    {
+      "id": 1,
+      "title": "生鲜破损退款指引",
+      "count": 25
+    },
+    {
+      "id": 3,
+      "title": "公开售后服务总则（验收演示资料）",
+      "count": 25
+    }
+  ],
+  "daily": [
+    {
+      "date": "2026-11-10",
+      "pv": 0,
+      "uv": 0,
+      "tokens": 0,
+      "latency_ms": null
+    },
+    {
+      "date": "2026-11-11",
+      "pv": 0,
+      "uv": 0,
+      "tokens": 0,
+      "latency_ms": null
+    },
+    {
+      "date": "2026-11-12",
+      "pv": 0,
+      "uv": 0,
+      "tokens": 0,
+      "latency_ms": null
+    },
+    {
+      "date": "2026-11-13",
+      "pv": 0,
+      "uv": 0,
+      "tokens": 0,
+      "latency_ms": null
+    },
+    {
+      "date": "2026-11-14",
+      "pv": 0,
+      "uv": 0,
+      "tokens": 0,
+      "latency_ms": null
+    },
+    {
+      "date": "2026-11-15",
+      "pv": 0,
+      "uv": 0,
+      "tokens": 0,
+      "latency_ms": null
+    },
+    {
+      "date": "2026-11-16",
+      "pv": 59,
+      "uv": 2,
+      "tokens": 5243,
+      "latency_ms": 32929.65380837983
+    }
+  ],
+  "as_of": "2026-11-16T07:15:20.529527+00:00"
+}
