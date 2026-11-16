@@ -1,0 +1,1146 @@
+{
+  "requirements_document": "D:/Project/PycharmProject/real/2.9.md",
+  "implementation_commit": "b77a4d97c7747f992eed6a58d8ffaa20d3cdcda9",
+  "implementation_merge": "4a4e1b13e87343ee5ac84b8ed14775067974fea1",
+  "scenario": "验收演示：生鲜破损退款FAQ沉淀与海外直邮清关延误缺口闭环",
+  "checks": {
+    "knowledge_crud": {
+      "created_id": 5,
+      "content_read": true,
+      "updated_title": "验收临时知识（已修改）",
+      "updated_category": "验收临时/已修改",
+      "updated_version": 6,
+      "deleted_get_status": 404
+    },
+    "acl": {
+      "default_deny": {
+        "admin": 403,
+        "customer": 403,
+        "department": 403,
+        "role": 403,
+        "personal": 403,
+        "denied": 403
+      },
+      "private_OR": {
+        "customer": {
+          "status": 403,
+          "contains_private_marker": false
+        },
+        "department": {
+          "status": 200,
+          "contains_private_marker": true
+        },
+        "role": {
+          "status": 200,
+          "contains_private_marker": true
+        },
+        "personal": {
+          "status": 200,
+          "contains_private_marker": true
+        },
+        "denied": {
+          "status": 403,
+          "contains_private_marker": false
+        }
+      },
+      "public_global": {
+        "customer": 200,
+        "department": 200,
+        "role": 200,
+        "personal": 200,
+        "denied": 200
+      },
+      "ordinary_department_create_status": 403,
+      "scope": "隔离验收数据库；接口配置授权，实际页面核对并保存"
+    },
+    "observed_model_answer": {
+      "request_id": "79ed6b578f0345a2b2ea51078fe53c95",
+      "conversation_id": 2,
+      "message_id": 12,
+      "user_id": 2,
+      "department_id": 3,
+      "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+      "candidates": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "allowed": [
+        1,
+        3
+      ],
+      "blocked": [
+        2,
+        4,
+        5
+      ],
+      "sources": [
+        {
+          "label": "S1",
+          "knowledge_id": 1,
+          "version_id": 1,
+          "chunk_id": 1,
+          "title": "生鲜破损退款指引",
+          "section": "",
+          "page": 1,
+          "location": "生鲜破损退款指引.pdf:page:1:y:45.41; 生鲜破损退款指引.pdf:page:1:y:86.19; 生鲜破损退款指引.pdf:page:1:y:122.54; 生鲜破损退款指引.pdf:page:1:y:161.94; 生鲜破损退款指引.pdf:page:1:y:181.44; 生鲜破损退款指引.pdf:page:1:y:200.19; 生鲜破损退款指引.pdf:page:1:y:219.69; 生鲜破损退款指引.pdf:page:1:y:256.04; 生鲜破损退款指引.pdf:page:1:y:293.12; 生鲜破损退款指引.pdf:page:1:y:323.19"
+        },
+        {
+          "label": "S2",
+          "knowledge_id": 3,
+          "version_id": 3,
+          "chunk_id": 6,
+          "title": "公开售后服务总则（验收演示资料）",
+          "section": "公开售后服务总则（验收演示资料） / 生鲜破损咨询",
+          "page": null,
+          "location": "公开售后服务总则.md:lines:9-9; 公开售后服务总则.md:lines:11-11"
+        },
+        {
+          "label": "S3",
+          "knowledge_id": 3,
+          "version_id": 3,
+          "chunk_id": 5,
+          "title": "公开售后服务总则（验收演示资料）",
+          "section": "公开售后服务总则（验收演示资料） / 服务渠道",
+          "page": null,
+          "location": "公开售后服务总则.md:lines:5-5; 公开售后服务总则.md:lines:7-7"
+        },
+        {
+          "label": "S4",
+          "knowledge_id": 3,
+          "version_id": 3,
+          "chunk_id": 4,
+          "title": "公开售后服务总则（验收演示资料）",
+          "section": "公开售后服务总则（验收演示资料）",
+          "page": null,
+          "location": "公开售后服务总则.md:lines:1-1; 公开售后服务总则.md:lines:3-3"
+        },
+        {
+          "label": "S5",
+          "knowledge_id": 3,
+          "version_id": 3,
+          "chunk_id": 7,
+          "title": "公开售后服务总则（验收演示资料）",
+          "section": "公开售后服务总则（验收演示资料） / 授权说明",
+          "page": null,
+          "location": "公开售后服务总则.md:lines:13-13; 公开售后服务总则.md:lines:15-15"
+        }
+      ],
+      "token_usage": {
+        "prompt_tokens": 760,
+        "completion_tokens": 291,
+        "total_tokens": 1051,
+        "prompt_tokens_details": {
+          "cached_tokens": 512
+        },
+        "prompt_cache_hit_tokens": 512,
+        "prompt_cache_miss_tokens": 248
+      },
+      "latency_ms": 198645.13399917632,
+      "status": "complete",
+      "source_mode": "external_api",
+      "faq_release_id": null,
+      "valid": true,
+      "model_called": true,
+      "model_version": "deepseek-flash",
+      "error_code": null,
+      "created_at": "2026-11-16 06:40:04.238796+00:00"
+    },
+    "initial_gap": {
+      "question": "海外直邮保税仓清关延误应如何处理？",
+      "frequency": 2,
+      "status": "open",
+      "empty_knowledge_refusals": 2,
+      "model_called": false
+    },
+    "interrupted_requests": [
+      {
+        "request_id": "f7b951041630402da82def32110537aa",
+        "conversation_id": 1,
+        "message_id": 6,
+        "user_id": 2,
+        "department_id": 3,
+        "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+        "candidates": [],
+        "allowed": [],
+        "blocked": [],
+        "sources": [],
+        "token_usage": null,
+        "latency_ms": 182.99599923193455,
+        "status": "cancelled",
+        "source_mode": "pending",
+        "faq_release_id": null,
+        "valid": true,
+        "model_called": false,
+        "model_version": null,
+        "error_code": "client_cancelled",
+        "created_at": "2026-11-16 06:36:24.813007+00:00"
+      },
+      {
+        "request_id": "6b3d46d389564a4ca403eed51760f802",
+        "conversation_id": 3,
+        "message_id": 8,
+        "user_id": 2,
+        "department_id": 3,
+        "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+        "candidates": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "allowed": [
+          1,
+          3
+        ],
+        "blocked": [
+          2,
+          4
+        ],
+        "sources": [
+          {
+            "label": "S1",
+            "knowledge_id": 1,
+            "version_id": 1,
+            "chunk_id": 1,
+            "title": "生鲜破损退款指引",
+            "section": "",
+            "page": 1,
+            "location": "生鲜破损退款指引.pdf:page:1:y:45.41; 生鲜破损退款指引.pdf:page:1:y:86.19; 生鲜破损退款指引.pdf:page:1:y:122.54; 生鲜破损退款指引.pdf:page:1:y:161.94; 生鲜破损退款指引.pdf:page:1:y:181.44; 生鲜破损退款指引.pdf:page:1:y:200.19; 生鲜破损退款指引.pdf:page:1:y:219.69; 生鲜破损退款指引.pdf:page:1:y:256.04; 生鲜破损退款指引.pdf:page:1:y:293.12; 生鲜破损退款指引.pdf:page:1:y:323.19"
+          },
+          {
+            "label": "S2",
+            "knowledge_id": 3,
+            "version_id": 3,
+            "chunk_id": 6,
+            "title": "公开售后服务总则（验收演示资料）",
+            "section": "公开售后服务总则（验收演示资料） / 生鲜破损咨询",
+            "page": null,
+            "location": "公开售后服务总则.md:lines:9-9; 公开售后服务总则.md:lines:11-11"
+          },
+          {
+            "label": "S3",
+            "knowledge_id": 3,
+            "version_id": 3,
+            "chunk_id": 5,
+            "title": "公开售后服务总则（验收演示资料）",
+            "section": "公开售后服务总则（验收演示资料） / 服务渠道",
+            "page": null,
+            "location": "公开售后服务总则.md:lines:5-5; 公开售后服务总则.md:lines:7-7"
+          },
+          {
+            "label": "S4",
+            "knowledge_id": 3,
+            "version_id": 3,
+            "chunk_id": 4,
+            "title": "公开售后服务总则（验收演示资料）",
+            "section": "公开售后服务总则（验收演示资料）",
+            "page": null,
+            "location": "公开售后服务总则.md:lines:1-1; 公开售后服务总则.md:lines:3-3"
+          },
+          {
+            "label": "S5",
+            "knowledge_id": 3,
+            "version_id": 3,
+            "chunk_id": 7,
+            "title": "公开售后服务总则（验收演示资料）",
+            "section": "公开售后服务总则（验收演示资料） / 授权说明",
+            "page": null,
+            "location": "公开售后服务总则.md:lines:13-13; 公开售后服务总则.md:lines:15-15"
+          }
+        ],
+        "token_usage": null,
+        "latency_ms": 194622.59840033948,
+        "status": "cancelled",
+        "source_mode": "external_api",
+        "faq_release_id": null,
+        "valid": true,
+        "model_called": true,
+        "model_version": "deepseek-flash",
+        "error_code": "client_cancelled",
+        "created_at": "2026-11-16 06:37:48.186970+00:00"
+      },
+      {
+        "request_id": "d9ec1a508b8d421baa6252b66be3862a",
+        "conversation_id": 4,
+        "message_id": 10,
+        "user_id": 2,
+        "department_id": 3,
+        "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+        "candidates": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "allowed": [
+          1,
+          3
+        ],
+        "blocked": [
+          2,
+          4
+        ],
+        "sources": [
+          {
+            "label": "S1",
+            "knowledge_id": 1,
+            "version_id": 1,
+            "chunk_id": 1,
+            "title": "生鲜破损退款指引",
+            "section": "",
+            "page": 1,
+            "location": "生鲜破损退款指引.pdf:page:1:y:45.41; 生鲜破损退款指引.pdf:page:1:y:86.19; 生鲜破损退款指引.pdf:page:1:y:122.54; 生鲜破损退款指引.pdf:page:1:y:161.94; 生鲜破损退款指引.pdf:page:1:y:181.44; 生鲜破损退款指引.pdf:page:1:y:200.19; 生鲜破损退款指引.pdf:page:1:y:219.69; 生鲜破损退款指引.pdf:page:1:y:256.04; 生鲜破损退款指引.pdf:page:1:y:293.12; 生鲜破损退款指引.pdf:page:1:y:323.19"
+          },
+          {
+            "label": "S2",
+            "knowledge_id": 3,
+            "version_id": 3,
+            "chunk_id": 6,
+            "title": "公开售后服务总则（验收演示资料）",
+            "section": "公开售后服务总则（验收演示资料） / 生鲜破损咨询",
+            "page": null,
+            "location": "公开售后服务总则.md:lines:9-9; 公开售后服务总则.md:lines:11-11"
+          },
+          {
+            "label": "S3",
+            "knowledge_id": 3,
+            "version_id": 3,
+            "chunk_id": 5,
+            "title": "公开售后服务总则（验收演示资料）",
+            "section": "公开售后服务总则（验收演示资料） / 服务渠道",
+            "page": null,
+            "location": "公开售后服务总则.md:lines:5-5; 公开售后服务总则.md:lines:7-7"
+          },
+          {
+            "label": "S4",
+            "knowledge_id": 3,
+            "version_id": 3,
+            "chunk_id": 4,
+            "title": "公开售后服务总则（验收演示资料）",
+            "section": "公开售后服务总则（验收演示资料）",
+            "page": null,
+            "location": "公开售后服务总则.md:lines:1-1; 公开售后服务总则.md:lines:3-3"
+          },
+          {
+            "label": "S5",
+            "knowledge_id": 3,
+            "version_id": 3,
+            "chunk_id": 7,
+            "title": "公开售后服务总则（验收演示资料）",
+            "section": "公开售后服务总则（验收演示资料） / 授权说明",
+            "page": null,
+            "location": "公开售后服务总则.md:lines:13-13; 公开售后服务总则.md:lines:15-15"
+          }
+        ],
+        "token_usage": null,
+        "latency_ms": 194268.63790024072,
+        "status": "cancelled",
+        "source_mode": "external_api",
+        "faq_release_id": null,
+        "valid": true,
+        "model_called": true,
+        "model_version": "deepseek-flash",
+        "error_code": "client_cancelled",
+        "created_at": "2026-11-16 06:37:48.420671+00:00"
+      }
+    ],
+    "code_copy": {
+      "matches_visible_example": true
+    },
+    "unauthenticated_conversations_status": 401,
+    "additional_model_questions": {
+      "completed": 4,
+      "failed": 0,
+      "rows": [
+        {
+          "index": 1,
+          "conversation_id": 5,
+          "message_id": 14,
+          "source_mode": "external_api",
+          "platform_latency_ms": 315847.5705999881,
+          "token_usage": {
+            "prompt_tokens": 760,
+            "completion_tokens": 282,
+            "total_tokens": 1042,
+            "prompt_tokens_details": {
+              "cached_tokens": 512
+            },
+            "prompt_cache_hit_tokens": 512,
+            "prompt_cache_miss_tokens": 248
+          },
+          "citation_count": 5
+        },
+        {
+          "index": 2,
+          "conversation_id": 6,
+          "message_id": 16,
+          "source_mode": "external_api",
+          "platform_latency_ms": 318270.4885005951,
+          "token_usage": {
+            "prompt_tokens": 760,
+            "completion_tokens": 291,
+            "total_tokens": 1051,
+            "prompt_tokens_details": {
+              "cached_tokens": 512
+            },
+            "prompt_cache_hit_tokens": 512,
+            "prompt_cache_miss_tokens": 248
+          },
+          "citation_count": 5
+        },
+        {
+          "index": 3,
+          "conversation_id": 8,
+          "message_id": 20,
+          "source_mode": "external_api",
+          "platform_latency_ms": 321587.2307997197,
+          "token_usage": {
+            "prompt_tokens": 760,
+            "completion_tokens": 288,
+            "total_tokens": 1048,
+            "prompt_tokens_details": {
+              "cached_tokens": 512
+            },
+            "prompt_cache_hit_tokens": 512,
+            "prompt_cache_miss_tokens": 248
+          },
+          "citation_count": 5
+        },
+        {
+          "index": 4,
+          "conversation_id": 7,
+          "message_id": 18,
+          "source_mode": "external_api",
+          "platform_latency_ms": 322963.4221000597,
+          "token_usage": {
+            "prompt_tokens": 760,
+            "completion_tokens": 291,
+            "total_tokens": 1051,
+            "prompt_tokens_details": {
+              "cached_tokens": 512
+            },
+            "prompt_cache_hit_tokens": 512,
+            "prompt_cache_miss_tokens": 248
+          },
+          "citation_count": 5
+        }
+      ]
+    },
+    "history_title_saved": true,
+    "faq_candidate": {
+      "id": 1,
+      "count": 7,
+      "confidence": 1.0,
+      "status_before_review": "pending",
+      "completed_source_questions": 5,
+      "cancelled_source_questions": 2,
+      "retrieval_before_cancel_excluded": 1,
+      "sources": [
+        {
+          "label": "S1",
+          "knowledge_id": 1,
+          "version_id": 1,
+          "chunk_id": 1,
+          "title": "生鲜破损退款指引",
+          "section": "",
+          "page": 1,
+          "location": "生鲜破损退款指引.pdf:page:1:y:45.41; 生鲜破损退款指引.pdf:page:1:y:86.19; 生鲜破损退款指引.pdf:page:1:y:122.54; 生鲜破损退款指引.pdf:page:1:y:161.94; 生鲜破损退款指引.pdf:page:1:y:181.44; 生鲜破损退款指引.pdf:page:1:y:200.19; 生鲜破损退款指引.pdf:page:1:y:219.69; 生鲜破损退款指引.pdf:page:1:y:256.04; 生鲜破损退款指引.pdf:page:1:y:293.12; 生鲜破损退款指引.pdf:page:1:y:323.19"
+        },
+        {
+          "label": "S2",
+          "knowledge_id": 3,
+          "version_id": 3,
+          "chunk_id": 6,
+          "title": "公开售后服务总则（验收演示资料）",
+          "section": "公开售后服务总则（验收演示资料） / 生鲜破损咨询",
+          "page": null,
+          "location": "公开售后服务总则.md:lines:9-9; 公开售后服务总则.md:lines:11-11"
+        },
+        {
+          "label": "S3",
+          "knowledge_id": 3,
+          "version_id": 3,
+          "chunk_id": 5,
+          "title": "公开售后服务总则（验收演示资料）",
+          "section": "公开售后服务总则（验收演示资料） / 服务渠道",
+          "page": null,
+          "location": "公开售后服务总则.md:lines:5-5; 公开售后服务总则.md:lines:7-7"
+        },
+        {
+          "label": "S4",
+          "knowledge_id": 3,
+          "version_id": 3,
+          "chunk_id": 4,
+          "title": "公开售后服务总则（验收演示资料）",
+          "section": "公开售后服务总则（验收演示资料）",
+          "page": null,
+          "location": "公开售后服务总则.md:lines:1-1; 公开售后服务总则.md:lines:3-3"
+        },
+        {
+          "label": "S5",
+          "knowledge_id": 3,
+          "version_id": 3,
+          "chunk_id": 7,
+          "title": "公开售后服务总则（验收演示资料）",
+          "section": "公开售后服务总则（验收演示资料） / 授权说明",
+          "page": null,
+          "location": "公开售后服务总则.md:lines:13-13; 公开售后服务总则.md:lines:15-15"
+        }
+      ]
+    },
+    "faq_release": {
+      "id": 1,
+      "question": "生鲜食品破损如何申请退款?",
+      "answer": "以下仅为验收演示资料中的流程，不代表真实公司的退款政策。[S1]\n\n1. 在签收后24小时内提交售后申请，保留破损商品照片、外包装照片与订单号。[S1]\n2. 进入订单详情，选择“申请售后”和“商品破损”，上传照片并说明情况。[S1]\n3. 资料齐全后由人工客服审核，以订单页面及审核结果为准，不在知识问答中承诺赔付金额。[S1]\n4. 超过24小时请先联系人工客服说明原因，由人工核实后处理，不承诺自动退款。[S1]\n\n订单提交示例仅说明字段，以下是虚构数据。[S1]\n\n```json\n{\"order_id\":\"DEMO-20261116\",\"issue\":\"商品破损\",\"photos_attached\":true}\n```\n\n需要核验订单或核定赔付时转接人工客服，不在公开问答中提交身份证号、银行卡号或密码。[S3]",
+      "aliases": [
+        "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+        "生鲜食品破损如何申请退款"
+      ],
+      "version": 1,
+      "enabled": true,
+      "sources": [
+        {
+          "label": "S1",
+          "knowledge_id": 1,
+          "version_id": 1,
+          "chunk_id": 1,
+          "title": "生鲜破损退款指引",
+          "section": "",
+          "page": 1,
+          "location": "生鲜破损退款指引.pdf:page:1:y:45.41; 生鲜破损退款指引.pdf:page:1:y:86.19; 生鲜破损退款指引.pdf:page:1:y:122.54; 生鲜破损退款指引.pdf:page:1:y:161.94; 生鲜破损退款指引.pdf:page:1:y:181.44; 生鲜破损退款指引.pdf:page:1:y:200.19; 生鲜破损退款指引.pdf:page:1:y:219.69; 生鲜破损退款指引.pdf:page:1:y:256.04; 生鲜破损退款指引.pdf:page:1:y:293.12; 生鲜破损退款指引.pdf:page:1:y:323.19"
+        },
+        {
+          "label": "S2",
+          "knowledge_id": 3,
+          "version_id": 3,
+          "chunk_id": 6,
+          "title": "公开售后服务总则（验收演示资料）",
+          "section": "公开售后服务总则（验收演示资料） / 生鲜破损咨询",
+          "page": null,
+          "location": "公开售后服务总则.md:lines:9-9; 公开售后服务总则.md:lines:11-11"
+        },
+        {
+          "label": "S3",
+          "knowledge_id": 3,
+          "version_id": 3,
+          "chunk_id": 5,
+          "title": "公开售后服务总则（验收演示资料）",
+          "section": "公开售后服务总则（验收演示资料） / 服务渠道",
+          "page": null,
+          "location": "公开售后服务总则.md:lines:5-5; 公开售后服务总则.md:lines:7-7"
+        },
+        {
+          "label": "S4",
+          "knowledge_id": 3,
+          "version_id": 3,
+          "chunk_id": 4,
+          "title": "公开售后服务总则（验收演示资料）",
+          "section": "公开售后服务总则（验收演示资料）",
+          "page": null,
+          "location": "公开售后服务总则.md:lines:1-1; 公开售后服务总则.md:lines:3-3"
+        },
+        {
+          "label": "S5",
+          "knowledge_id": 3,
+          "version_id": 3,
+          "chunk_id": 7,
+          "title": "公开售后服务总则（验收演示资料）",
+          "section": "公开售后服务总则（验收演示资料） / 授权说明",
+          "page": null,
+          "location": "公开售后服务总则.md:lines:13-13; 公开售后服务总则.md:lines:15-15"
+        }
+      ],
+      "created_at": "2026-11-16T07:04:36.091123+00:00"
+    },
+    "cache": {
+      "api_answers": 48,
+      "UI_answer": 1,
+      "actors": [
+        "customer",
+        "department"
+      ],
+      "question_forms": 3,
+      "all_faq": true,
+      "all_zero_tokens": true,
+      "all_persisted_match": true,
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "redis_entries": [
+        {
+          "key": "knowledge:faq:v1:8f7b6b27e4f97757cc7be6881d87e4a246227ad2be97cd3a45f68bcd38952c60",
+          "ttl_seconds": 224,
+          "release_id": 1,
+          "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a"
+        },
+        {
+          "key": "knowledge:faq:v1:3d16ee646c6f6e0a0d41095a0e320a786f2940e12460bd02411848e91294bfc3",
+          "ttl_seconds": 124,
+          "release_id": 1,
+          "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a"
+        }
+      ],
+      "platform_latency_ms": {
+        "minimum": 957.2569997981191,
+        "median": 1259.668099693954,
+        "mean": 1269.5906519657,
+        "p95_linear": 1508.3703049924225,
+        "maximum": 1648.5257996246219
+      },
+      "initial_UI_answer_ms": 1203
+    },
+    "supplement": {
+      "gap": {
+        "id": 1,
+        "question": "海外直邮保税仓清关延误应如何处理?",
+        "department_id": 3,
+        "user_id": 2,
+        "frequency": 2,
+        "first_seen": "2026-11-16T06:27:43.699169+00:00",
+        "last_seen": "2026-11-16T07:06:21.051304+00:00",
+        "highest_score": null,
+        "suggested_category": "未分类",
+        "status": "resolved"
+      },
+      "task": {
+        "id": 1,
+        "gap_id": 1,
+        "title": "海外直邮保税仓清关延误应如何处理?",
+        "assigned_to": 1,
+        "status": "completed",
+        "knowledge_ids": [
+          6
+        ],
+        "created_at": "2026-11-16T06:37:48.841898+00:00",
+        "completed_at": "2026-11-16T07:06:20.646014+00:00"
+      },
+      "published_knowledge": {
+        "id": 6,
+        "title": "海外直邮清关延误处理说明（验收演示）",
+        "active_version_id": 7,
+        "category": "验收演示/清关知识补充"
+      },
+      "readable_chunks": [
+        {
+          "id": 11,
+          "version_id": 7,
+          "sequence": 0,
+          "content": "# 海外直邮清关延误处理说明（验收演示）\n\n本文仅用于知识库平台的知识缺口补足验收，不构成真实跨境物流承诺。",
+          "section": "海外直邮清关延误处理说明（验收演示）",
+          "page": null,
+          "location": "海外直邮清关延误处理说明.md:lines:1-1; 海外直邮清关延误处理说明.md:lines:3-3",
+          "token_count": 34
+        },
+        {
+          "id": 12,
+          "version_id": 7,
+          "sequence": 1,
+          "content": "## 海外直邮保税仓清关延误应如何处理\n\n1. 先核实订单号、物流运单号及平台展示的清关状态。\n\n2. 联系物流客服确认是否需要补充申报资料；通过官方渠道提交，不在公开问答中提供个人证件信息。\n\n3. 如资料已完整，向人工客服登记清关跟进工单，记录当前节点和下次跟进时间。\n\n4. 未得到物流方明确反馈前，不承诺固定放行时间或自动退款。",
+          "section": "海外直邮清关延误处理说明（验收演示） / 海外直邮保税仓清关延误应如何处理",
+          "page": null,
+          "location": "海外直邮清关延误处理说明.md:lines:5-5; 海外直邮清关延误处理说明.md:lines:7-7; 海外直邮清关延误处理说明.md:lines:8-8; 海外直邮清关延误处理说明.md:lines:9-9; 海外直邮清关延误处理说明.md:lines:10-10",
+          "token_count": 110
+        },
+        {
+          "id": 13,
+          "version_id": 7,
+          "sequence": 2,
+          "content": "## 记录要求\n\n在工单中保留运单号、当前清关节点、资料补充情况与跟进时间，形成可追溯的服务记录。",
+          "section": "海外直邮清关延误处理说明（验收演示） / 记录要求",
+          "page": null,
+          "location": "海外直邮清关延误处理说明.md:lines:12-12; 海外直邮清关延误处理说明.md:lines:14-14",
+          "token_count": 33
+        }
+      ],
+      "search": {
+        "query": "海外直邮保税仓清关延误",
+        "first_knowledge_id": 6,
+        "first_version_id": 7,
+        "first_chunk_id": 12,
+        "rerank_score": 0.9946619868278503,
+        "surface": "普通客户知识检索页面",
+        "model_not_called_for_search": true
+      }
+    },
+    "metrics": {
+      "values": {
+        "pv": 59,
+        "uv": 2,
+        "knowledge_count": 4,
+        "faq_hit_rate": 0.8305084745762712,
+        "coverage_rate": 0.9491525423728814,
+        "permission_block_rate": 0.11864406779661017,
+        "token_total": 5243,
+        "token_unknown_requests": 2,
+        "failures": 3,
+        "latency": {
+          "mean_ms": 32929.65380837983,
+          "p50_ms": 1269.182799383998,
+          "p95_ms": 316089.8623900488
+        },
+        "top_questions": [
+          {
+            "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+            "count": 9
+          },
+          {
+            "question": "生鲜食品破损如何申请退款？",
+            "count": 9
+          },
+          {
+            "question": "生鲜食品破损如何申请退款",
+            "count": 8
+          },
+          {
+            "question": "海外直邮保税仓清关延误应如何处理？",
+            "count": 2
+          }
+        ],
+        "top_knowledge": [
+          {
+            "id": 1,
+            "title": "生鲜破损退款指引",
+            "count": 25
+          },
+          {
+            "id": 3,
+            "title": "公开售后服务总则（验收演示资料）",
+            "count": 25
+          }
+        ],
+        "daily": [
+          {
+            "date": "2026-11-10",
+            "pv": 0,
+            "uv": 0,
+            "tokens": 0,
+            "latency_ms": null
+          },
+          {
+            "date": "2026-11-11",
+            "pv": 0,
+            "uv": 0,
+            "tokens": 0,
+            "latency_ms": null
+          },
+          {
+            "date": "2026-11-12",
+            "pv": 0,
+            "uv": 0,
+            "tokens": 0,
+            "latency_ms": null
+          },
+          {
+            "date": "2026-11-13",
+            "pv": 0,
+            "uv": 0,
+            "tokens": 0,
+            "latency_ms": null
+          },
+          {
+            "date": "2026-11-14",
+            "pv": 0,
+            "uv": 0,
+            "tokens": 0,
+            "latency_ms": null
+          },
+          {
+            "date": "2026-11-15",
+            "pv": 0,
+            "uv": 0,
+            "tokens": 0,
+            "latency_ms": null
+          },
+          {
+            "date": "2026-11-16",
+            "pv": 59,
+            "uv": 2,
+            "tokens": 5243,
+            "latency_ms": 32929.65380837983
+          }
+        ],
+        "as_of": "2026-11-16T07:15:20.529527+00:00"
+      },
+      "raw_audits_reconciled": true,
+      "compared": [
+        "pv",
+        "uv",
+        "knowledge_count",
+        "token_total",
+        "token_unknown_requests",
+        "failures",
+        "faq_hit_rate",
+        "seven_day_pv_total",
+        "seven_day_token_total",
+        "top_questions_with_scope_and_block_filter",
+        "top_knowledge_with_scope_and_block_filter",
+        "latency_mean",
+        "latency_p50",
+        "latency_p95"
+      ],
+      "ui_missing_response_time_trend": true
+    },
+    "document_imports": {
+      "initial_formats": [
+        "pdf",
+        "docx",
+        "md",
+        "txt"
+      ],
+      "initial_success_count": 4,
+      "including_supplement_success_count": 5,
+      "failure_count": 0,
+      "tasks": [
+        {
+          "id": "5de874b3-81f2-4211-a9cc-019050cd1f74",
+          "status": "succeeded",
+          "total": 1,
+          "completed": 1,
+          "failed": 0,
+          "progress": 100,
+          "created_at": "2026-11-16T07:06:19.377116+00:00",
+          "updated_at": "2026-11-16T07:06:20.635173+00:00",
+          "items": [
+            {
+              "id": "4027a150-25ed-4a9a-bb80-1d6416a90994",
+              "relative_path": "海外直邮清关延误处理说明.md",
+              "status": "succeeded",
+              "stage": "done",
+              "progress": 100,
+              "error": null,
+              "knowledge_id": 6,
+              "version_id": 7,
+              "attempt": 1
+            }
+          ]
+        },
+        {
+          "id": "61d08dfa-4248-4510-93c6-8590ce7be7d4",
+          "status": "succeeded",
+          "total": 3,
+          "completed": 3,
+          "failed": 0,
+          "progress": 100,
+          "created_at": "2026-11-16T06:31:35.925079+00:00",
+          "updated_at": "2026-11-16T06:31:38.244946+00:00",
+          "items": [
+            {
+              "id": "8631bd8f-5bd3-4125-9222-9615991b989b",
+              "relative_path": "公开售后服务总则.md",
+              "status": "succeeded",
+              "stage": "done",
+              "progress": 100,
+              "error": null,
+              "knowledge_id": 3,
+              "version_id": 3,
+              "attempt": 1
+            },
+            {
+              "id": "3ba48659-5dbb-453c-9945-918e9da3dd75",
+              "relative_path": "内部售后审核额度说明.docx",
+              "status": "succeeded",
+              "stage": "done",
+              "progress": 100,
+              "error": null,
+              "knowledge_id": 2,
+              "version_id": 2,
+              "attempt": 1
+            },
+            {
+              "id": "d1abf1ba-e71a-494d-8408-55c2921a180f",
+              "relative_path": "默认拒绝访问验证.txt",
+              "status": "succeeded",
+              "stage": "done",
+              "progress": 100,
+              "error": null,
+              "knowledge_id": 4,
+              "version_id": 4,
+              "attempt": 1
+            }
+          ]
+        },
+        {
+          "id": "d43b48ff-d58d-4c6b-9248-13ffd510f4e6",
+          "status": "succeeded",
+          "total": 1,
+          "completed": 1,
+          "failed": 0,
+          "progress": 100,
+          "created_at": "2026-11-16T06:30:28.153650+00:00",
+          "updated_at": "2026-11-16T06:30:41.715952+00:00",
+          "items": [
+            {
+              "id": "e908fa6a-6808-444a-aaa2-a89657a188b0",
+              "relative_path": "生鲜破损退款指引.pdf",
+              "status": "succeeded",
+              "stage": "done",
+              "progress": 100,
+              "error": null,
+              "knowledge_id": 1,
+              "version_id": 1,
+              "attempt": 1
+            }
+          ]
+        }
+      ]
+    },
+    "organization": {
+      "UI_login_verified": true,
+      "created_department": "渠道客服组",
+      "parent_department": "客户服务部",
+      "created_role": "客服知识编辑员（验收）",
+      "exact_role_permissions": [
+        "knowledge:read",
+        "knowledge:manage",
+        "chat:ask"
+      ],
+      "seeded_test_users": 7
+    },
+    "model_configuration": {
+      "mode": "external_api",
+      "base_url": "https://api.deepseek.com",
+      "model_name": "deepseek-flash",
+      "has_api_key": true,
+      "model_version": "deepseek-flash",
+      "release_verified": false,
+      "calibration_verified": false,
+      "configuration_id": "5228ec9e9014b8caafbb63efec5dd64cdfb10ed77855af431339ba69a88d8a99",
+      "status": "外部API模式，检索未校准"
+    },
+    "scenario": {
+      "successful_refund_model_answers": 5,
+      "FAQ_answers": 49,
+      "successful_refund_answers_total": 54,
+      "distinct_question_users": 2,
+      "gap_frequency_before_resolution": 2,
+      "gap_resolved": true,
+      "supplement_published_and_retrievable": true,
+      "mining_threshold": 5,
+      "mined_candidate_frequency": 7,
+      "performance_millisecond_target_met": false
+    }
+  },
+  "screenshots": [
+    {
+      "file": "01-login.png",
+      "title": "真实登录入口",
+      "criteria": [
+        "2.9.10-1"
+      ]
+    },
+    {
+      "file": "02-department-tree.png",
+      "title": "新增子部门后的组织树",
+      "criteria": [
+        "2.9.10-1"
+      ]
+    },
+    {
+      "file": "03-role-permissions.png",
+      "title": "菜单与操作权限独立勾选",
+      "criteria": [
+        "2.9.10-1"
+      ]
+    },
+    {
+      "file": "04-user-management.png",
+      "title": "七种验收身份及直属部门与角色",
+      "criteria": [
+        "2.9.10-1"
+      ]
+    },
+    {
+      "file": "05-empty-knowledge-refusal.png",
+      "title": "空库拒答且零模型Token",
+      "criteria": [
+        "2.9.10-8"
+      ]
+    },
+    {
+      "file": "06-gap-frequency.png",
+      "title": "未命中问题累计频次2",
+      "criteria": [
+        "2.9.10-8"
+      ]
+    },
+    {
+      "file": "07-single-file-upload.png",
+      "title": "PDF单文件上传与全局授权",
+      "criteria": [
+        "2.9.10-2",
+        "2.9.10-3"
+      ]
+    },
+    {
+      "file": "08-batch-upload.png",
+      "title": "Word、Markdown、TXT批量上传",
+      "criteria": [
+        "2.9.10-2"
+      ]
+    },
+    {
+      "file": "09-import-results.png",
+      "title": "四格式导入实际成功终态",
+      "criteria": [
+        "2.9.10-2"
+      ]
+    },
+    {
+      "file": "10-knowledge-management.png",
+      "title": "知识管理目录与生命周期操作",
+      "criteria": [
+        "2.9.10-3"
+      ]
+    },
+    {
+      "file": "11-mixed-access-controls.png",
+      "title": "同一知识单元四维混合授权",
+      "criteria": [
+        "2.9.10-3",
+        "2.9.10-4"
+      ]
+    },
+    {
+      "file": "12-supplement-task.png",
+      "title": "缺口转为真实补充任务",
+      "criteria": [
+        "2.9.10-8"
+      ]
+    },
+    {
+      "file": "13-model-settings.png",
+      "title": "实际DeepSeek外部模型配置和未校准状态",
+      "criteria": [
+        "2.9.10-9"
+      ],
+      "url": "http://127.0.0.1:5178/settings/model",
+      "page_title": "模型设置 · 知识库控制台"
+    },
+    {
+      "file": "14-rag-answer.png",
+      "title": "真实DeepSeek退款回答、Markdown、代码高亮及权限提示",
+      "criteria": [
+        "2.9.10-5",
+        "2.9.10-6",
+        "2.9.10-9"
+      ],
+      "url": "http://127.0.0.1:5178/chat",
+      "page_title": "AI智能问答 · 知识库控制台"
+    },
+    {
+      "file": "15-citation-original.png",
+      "title": "点击S1后查看PDF原文、固定版本与页内位置",
+      "criteria": [
+        "2.9.10-5",
+        "2.9.10-9"
+      ],
+      "url": "http://127.0.0.1:5178/chat",
+      "page_title": "AI智能问答 · 知识库控制台"
+    },
+    {
+      "file": "16-question-audits.png",
+      "title": "实际问答审计保留完成、取消和运行中的请求",
+      "criteria": [
+        "2.9.10-5",
+        "2.9.10-6"
+      ],
+      "url": "http://127.0.0.1:5178/audits",
+      "page_title": "安全审计 · 知识库控制台"
+    },
+    {
+      "file": "17-faq-mining.png",
+      "title": "真实BGE聚类任务成功并生成高频候选",
+      "criteria": [
+        "2.9.10-7",
+        "2.9.10-9"
+      ],
+      "url": "http://127.0.0.1:5178/faq",
+      "page_title": "FAQ审核 · 知识库控制台"
+    },
+    {
+      "file": "18-faq-human-review.png",
+      "title": "管理员依据固定原文整理标准应答及同义问题",
+      "criteria": [
+        "2.9.10-7",
+        "2.9.10-9"
+      ],
+      "url": "http://127.0.0.1:5178/faq",
+      "page_title": "FAQ审核 · 知识库控制台"
+    },
+    {
+      "file": "19-faq-published.png",
+      "title": "人工审核后真实生成不可变FAQ发布版本",
+      "criteria": [
+        "2.9.10-7",
+        "2.9.10-9"
+      ],
+      "url": "http://127.0.0.1:5178/faq",
+      "page_title": "FAQ审核 · 知识库控制台"
+    },
+    {
+      "file": "20-faq-cache-answer.png",
+      "title": "后续同类问题直接返回已发布FAQ且模型Token为零",
+      "criteria": [
+        "2.9.10-7",
+        "2.9.10-9"
+      ],
+      "url": "http://127.0.0.1:5178/chat",
+      "page_title": "AI智能问答 · 知识库控制台"
+    },
+    {
+      "file": "21-supplement-upload.png",
+      "title": "带真实补充任务关联的清关说明文档导入",
+      "criteria": [
+        "2.9.10-8",
+        "2.9.10-9"
+      ],
+      "url": "http://127.0.0.1:5178/imports?supplement=1",
+      "page_title": "知识导入中心 · 知识库控制台"
+    },
+    {
+      "file": "22-gap-resolved.png",
+      "title": "清关文档成功发布后补充任务completed且缺口resolved",
+      "criteria": [
+        "2.9.10-8",
+        "2.9.10-9"
+      ],
+      "url": "http://127.0.0.1:5178/gaps",
+      "page_title": "知识缺口 · 知识库控制台"
+    },
+    {
+      "file": "23-supplement-search.png",
+      "title": "补充后的清关说明成为真实混合检索首位结果",
+      "criteria": [
+        "2.9.10-2",
+        "2.9.10-8",
+        "2.9.10-9"
+      ],
+      "url": "http://127.0.0.1:5178/search",
+      "page_title": "知识检索 · 知识库控制台",
+      "full_page": false
+    },
+    {
+      "file": "24-operations-dashboard.png",
+      "title": "真实PV、UV、知识数、Token、延时趋势和问题及知识榜",
+      "criteria": [
+        "2.9.10-6"
+      ],
+      "url": "http://127.0.0.1:5178/metrics",
+      "page_title": "运营看板 · 知识库控制台",
+      "full_page": true
+    }
+  ],
+  "limitations": [
+    "运营页面展示PV、UV、Token趋势与延时汇总，尚未绘制响应时间趋势；第6项部分通过。",
+    "五次成功外部模型回答耗时约199–323秒；模型生成期间部分管理接口响应较慢。",
+    "48次FAQ平台耗时中位1259.668ms、P95 1508.370ms，未达到示例描述的毫秒级目标。",
+    "3次取消请求保留；2次已调用模型但缺少usage，未当作零Token或成功回答。",
+    "FAQ候选频次7含5次完成与2次已有检索证据的取消请求；另1次检索前取消未进入候选。",
+    "按实现的7天至少5次阈值演示聚类；54次成功退款回答包含发布后的49次FAQ，并非发布前生成50次模型回答。",
+    "样本均为本日虚构验收文档与请求，七日图其余日期无数据；不据此证明长期趋势或生产质量。",
+    "外部API模式未进行独立检索校准；重排分数不等同于回答正确概率。"
+  ],
+  "verified_at_utc": "2026-11-16T07:20:40.395123+00:00",
+  "status": "complete_with_findings"
+}

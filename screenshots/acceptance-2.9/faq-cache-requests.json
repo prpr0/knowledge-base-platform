@@ -1,0 +1,1074 @@
+{
+  "requests": [
+    {
+      "index": 1,
+      "actor": "customer",
+      "question": "生鲜食品破损如何申请退款？",
+      "conversation_id": 9,
+      "message_id": 24,
+      "request_id": "ba421b4b4ac946cfbe30372ad75ce36f",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1158.6205996572971
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1313.8896999880672,
+      "persisted_match": true
+    },
+    {
+      "index": 2,
+      "actor": "department",
+      "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+      "conversation_id": 10,
+      "message_id": 26,
+      "request_id": "22580faedcf24540b5395833d4a9297e",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 957.2569997981191
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1152.2655002772808,
+      "persisted_match": true
+    },
+    {
+      "index": 3,
+      "actor": "customer",
+      "question": "生鲜食品破损如何申请退款",
+      "conversation_id": 11,
+      "message_id": 28,
+      "request_id": "55c6c94337d64bd78afbcfc251751d28",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1096.5976994484663
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1214.5490003749728,
+      "persisted_match": true
+    },
+    {
+      "index": 4,
+      "actor": "department",
+      "question": "生鲜食品破损如何申请退款？",
+      "conversation_id": 12,
+      "message_id": 30,
+      "request_id": "35a96191896540e192f5de57e8f76471",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1533.025600016117
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1783.3251999691129,
+      "persisted_match": true
+    },
+    {
+      "index": 5,
+      "actor": "customer",
+      "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+      "conversation_id": 13,
+      "message_id": 32,
+      "request_id": "025a78ae30f042409acf89aab9eaa138",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1330.2160995081067
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1440.0666998699307,
+      "persisted_match": true
+    },
+    {
+      "index": 6,
+      "actor": "department",
+      "question": "生鲜食品破损如何申请退款",
+      "conversation_id": 14,
+      "message_id": 34,
+      "request_id": "6d3a9a32e18a472fb6bfee60716423ba",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1414.2646994441748
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1571.9838999211788,
+      "persisted_match": true
+    },
+    {
+      "index": 7,
+      "actor": "customer",
+      "question": "生鲜食品破损如何申请退款？",
+      "conversation_id": 15,
+      "message_id": 36,
+      "request_id": "5d7cd67de06b4054ba107494653a6268",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1304.300599731505
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1477.3197006434202,
+      "persisted_match": true
+    },
+    {
+      "index": 8,
+      "actor": "department",
+      "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+      "conversation_id": 16,
+      "message_id": 38,
+      "request_id": "d4bab0601930447ebdbc2d13362d6659",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1323.8515006378293
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1470.4411001875997,
+      "persisted_match": true
+    },
+    {
+      "index": 9,
+      "actor": "customer",
+      "question": "生鲜食品破损如何申请退款",
+      "conversation_id": 17,
+      "message_id": 40,
+      "request_id": "dcd1a7f492934ed5a64c38fb6dd8d2c7",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1087.138299830258
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1258.0097997561097,
+      "persisted_match": true
+    },
+    {
+      "index": 10,
+      "actor": "department",
+      "question": "生鲜食品破损如何申请退款？",
+      "conversation_id": 18,
+      "message_id": 42,
+      "request_id": "6363592c0b1b4ec281f101addb092a47",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1274.3565002456307
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1429.2353997007012,
+      "persisted_match": true
+    },
+    {
+      "index": 11,
+      "actor": "customer",
+      "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+      "conversation_id": 19,
+      "message_id": 44,
+      "request_id": "f06f4e87f0294a238b6767117ef5aacd",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1051.2315994128585
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1276.5052998438478,
+      "persisted_match": true
+    },
+    {
+      "index": 12,
+      "actor": "department",
+      "question": "生鲜食品破损如何申请退款",
+      "conversation_id": 20,
+      "message_id": 46,
+      "request_id": "e3fcb1c4771346f99cc2e5cc2c334f10",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1269.182799383998
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1534.3236001208425,
+      "persisted_match": true
+    },
+    {
+      "index": 13,
+      "actor": "customer",
+      "question": "生鲜食品破损如何申请退款？",
+      "conversation_id": 21,
+      "message_id": 48,
+      "request_id": "ee1464788159461baffd9c16c3a25c2e",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1180.625700391829
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1365.005200728774,
+      "persisted_match": true
+    },
+    {
+      "index": 14,
+      "actor": "department",
+      "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+      "conversation_id": 22,
+      "message_id": 50,
+      "request_id": "6041d0a28fc346fcae4d8d798d9d38e9",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1277.0751994103193
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1490.137199871242,
+      "persisted_match": true
+    },
+    {
+      "index": 15,
+      "actor": "customer",
+      "question": "生鲜食品破损如何申请退款",
+      "conversation_id": 23,
+      "message_id": 52,
+      "request_id": "2d9435e0e52c4518a64d4d6f4103ddc9",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1376.8023001030087
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1542.5442000851035,
+      "persisted_match": true
+    },
+    {
+      "index": 16,
+      "actor": "department",
+      "question": "生鲜食品破损如何申请退款？",
+      "conversation_id": 24,
+      "message_id": 54,
+      "request_id": "65f87ac285074ac38fb55fa5506aaa98",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1279.3761994689703
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1525.433000177145,
+      "persisted_match": true
+    },
+    {
+      "index": 17,
+      "actor": "customer",
+      "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+      "conversation_id": 25,
+      "message_id": 56,
+      "request_id": "5761fa7a1b264545878e6951a4eb9d07",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1433.9493997395039
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1725.8213004097342,
+      "persisted_match": true
+    },
+    {
+      "index": 18,
+      "actor": "department",
+      "question": "生鲜食品破损如何申请退款",
+      "conversation_id": 26,
+      "message_id": 58,
+      "request_id": "56b0347ae2e1456d952fe9c85f24dec3",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1462.5818999484181
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1649.3787001818419,
+      "persisted_match": true
+    },
+    {
+      "index": 19,
+      "actor": "customer",
+      "question": "生鲜食品破损如何申请退款？",
+      "conversation_id": 27,
+      "message_id": 60,
+      "request_id": "f1417477994741729b9fdfc5bd472562",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1192.0892000198364
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1376.7777001485229,
+      "persisted_match": true
+    },
+    {
+      "index": 20,
+      "actor": "department",
+      "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+      "conversation_id": 28,
+      "message_id": 62,
+      "request_id": "d570fe38a5554bc3876328bdbb53109a",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1372.8061001747847
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1538.2358999922872,
+      "persisted_match": true
+    },
+    {
+      "index": 21,
+      "actor": "customer",
+      "question": "生鲜食品破损如何申请退款",
+      "conversation_id": 29,
+      "message_id": 64,
+      "request_id": "6c1825d0d40e4d2f9bcad33fb5c81ba7",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1196.5716993436217
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1362.3372996225953,
+      "persisted_match": true
+    },
+    {
+      "index": 22,
+      "actor": "department",
+      "question": "生鲜食品破损如何申请退款？",
+      "conversation_id": 30,
+      "message_id": 66,
+      "request_id": "587c5aaa6d894ded934fff7165ac0d30",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1427.569500170648
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1615.3668994084,
+      "persisted_match": true
+    },
+    {
+      "index": 23,
+      "actor": "customer",
+      "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+      "conversation_id": 31,
+      "message_id": 68,
+      "request_id": "94ed4dca02564f70b4d829ffa4c1a052",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1415.9044995903969
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1602.7439003810287,
+      "persisted_match": true
+    },
+    {
+      "index": 24,
+      "actor": "department",
+      "question": "生鲜食品破损如何申请退款",
+      "conversation_id": 32,
+      "message_id": 70,
+      "request_id": "8021904521a04f4da77868a206eb7993",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1201.5990000218153
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1385.1117994636297,
+      "persisted_match": true
+    },
+    {
+      "index": 25,
+      "actor": "customer",
+      "question": "生鲜食品破损如何申请退款？",
+      "conversation_id": 33,
+      "message_id": 72,
+      "request_id": "4378f69a7c5e41f580bf8da000607615",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1050.5557004362345
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1311.6648001596332,
+      "persisted_match": true
+    },
+    {
+      "index": 26,
+      "actor": "department",
+      "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+      "conversation_id": 34,
+      "message_id": 74,
+      "request_id": "c172529360114741b27587f547b5dd89",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1234.6564996987581
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1522.5114999338984,
+      "persisted_match": true
+    },
+    {
+      "index": 27,
+      "actor": "customer",
+      "question": "生鲜食品破损如何申请退款",
+      "conversation_id": 35,
+      "message_id": 76,
+      "request_id": "941804e5dd6941b78323a4e0b3787a8f",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1313.209700398147
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1485.628000460565,
+      "persisted_match": true
+    },
+    {
+      "index": 28,
+      "actor": "department",
+      "question": "生鲜食品破损如何申请退款？",
+      "conversation_id": 36,
+      "message_id": 78,
+      "request_id": "62cddf02e6c945238c921645924144ce",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1256.5299002453685
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1438.1208000704646,
+      "persisted_match": true
+    },
+    {
+      "index": 29,
+      "actor": "customer",
+      "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+      "conversation_id": 37,
+      "message_id": 80,
+      "request_id": "c67707d2b8ac4f72a7d6e09c7a915a75",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1255.92349935323
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1482.8963996842504,
+      "persisted_match": true
+    },
+    {
+      "index": 30,
+      "actor": "department",
+      "question": "生鲜食品破损如何申请退款",
+      "conversation_id": 38,
+      "message_id": 82,
+      "request_id": "2b3e30e1db6b4d219b6673f352b94295",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1134.7762001678348
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1337.6884004101157,
+      "persisted_match": true
+    },
+    {
+      "index": 31,
+      "actor": "customer",
+      "question": "生鲜食品破损如何申请退款？",
+      "conversation_id": 39,
+      "message_id": 84,
+      "request_id": "a975d5d7651f4caa818f25bb88f74e9f",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1225.2365993335843
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1480.0046999007463,
+      "persisted_match": true
+    },
+    {
+      "index": 32,
+      "actor": "department",
+      "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+      "conversation_id": 40,
+      "message_id": 86,
+      "request_id": "6b00aee1018741188ffcafc48b95b218",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1261.187900789082
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1473.543000407517,
+      "persisted_match": true
+    },
+    {
+      "index": 33,
+      "actor": "customer",
+      "question": "生鲜食品破损如何申请退款",
+      "conversation_id": 41,
+      "message_id": 88,
+      "request_id": "36f3bd5f7f5249cba3a95e3554a41d53",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1191.7179003357887
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1504.1298996657133,
+      "persisted_match": true
+    },
+    {
+      "index": 34,
+      "actor": "department",
+      "question": "生鲜食品破损如何申请退款？",
+      "conversation_id": 42,
+      "message_id": 90,
+      "request_id": "d126454e69c24ac49055e0d9f02cc0eb",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1242.9235000163317
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1472.1009004861116,
+      "persisted_match": true
+    },
+    {
+      "index": 35,
+      "actor": "customer",
+      "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+      "conversation_id": 43,
+      "message_id": 92,
+      "request_id": "39e2fa23e1974cdbbb68d21d88b9833b",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1260.2049997076392
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1490.9111000597477,
+      "persisted_match": true
+    },
+    {
+      "index": 36,
+      "actor": "department",
+      "question": "生鲜食品破损如何申请退款",
+      "conversation_id": 44,
+      "message_id": 94,
+      "request_id": "e83857210cc94141be02825cce3843b8",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1343.5738999396563
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1568.2127000764012,
+      "persisted_match": true
+    },
+    {
+      "index": 37,
+      "actor": "customer",
+      "question": "生鲜食品破损如何申请退款？",
+      "conversation_id": 45,
+      "message_id": 96,
+      "request_id": "97cf3e833af04303b6ed9bcac55653fb",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1191.4855996146798
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1388.579100370407,
+      "persisted_match": true
+    },
+    {
+      "index": 38,
+      "actor": "department",
+      "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+      "conversation_id": 46,
+      "message_id": 98,
+      "request_id": "18393a6545a749ea86dabf9884c0af1c",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1549.167800694704
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1676.7202001065016,
+      "persisted_match": true
+    },
+    {
+      "index": 39,
+      "actor": "customer",
+      "question": "生鲜食品破损如何申请退款",
+      "conversation_id": 47,
+      "message_id": 100,
+      "request_id": "6e07650e127341bc92ecc446a03cd58d",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1259.1311996802688
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1448.905799537897,
+      "persisted_match": true
+    },
+    {
+      "index": 40,
+      "actor": "department",
+      "question": "生鲜食品破损如何申请退款？",
+      "conversation_id": 48,
+      "message_id": 102,
+      "request_id": "f23f52dd9ec645a1b03ee5d9868e451c",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1160.9588004648685
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1396.5499000623822,
+      "persisted_match": true
+    },
+    {
+      "index": 41,
+      "actor": "customer",
+      "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+      "conversation_id": 49,
+      "message_id": 104,
+      "request_id": "015f9794d02a4b76b98a39c45bd33d33",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1364.5476000383496
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1578.7121998146176,
+      "persisted_match": true
+    },
+    {
+      "index": 42,
+      "actor": "department",
+      "question": "生鲜食品破损如何申请退款",
+      "conversation_id": 50,
+      "message_id": 106,
+      "request_id": "15794023ed604109a0b41663ba726bf7",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1228.4934995695949
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1432.8193999826908,
+      "persisted_match": true
+    },
+    {
+      "index": 43,
+      "actor": "customer",
+      "question": "生鲜食品破损如何申请退款？",
+      "conversation_id": 51,
+      "message_id": 108,
+      "request_id": "19e7809f053944409cdfb1d7d6154865",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1196.4223999530077
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1427.224799990654,
+      "persisted_match": true
+    },
+    {
+      "index": 44,
+      "actor": "department",
+      "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+      "conversation_id": 52,
+      "message_id": 110,
+      "request_id": "b2efdbe26aca415abd4010eeec96aa80",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1313.344399444759
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1531.2831001356244,
+      "persisted_match": true
+    },
+    {
+      "index": 45,
+      "actor": "customer",
+      "question": "生鲜食品破损如何申请退款",
+      "conversation_id": 53,
+      "message_id": 112,
+      "request_id": "faf592a044f34cc9a263c659e7f82e75",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1648.5257996246219
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1889.028400182724,
+      "persisted_match": true
+    },
+    {
+      "index": 46,
+      "actor": "department",
+      "question": "生鲜食品破损如何申请退款？",
+      "conversation_id": 54,
+      "message_id": 114,
+      "request_id": "c65a8923c0e742fa8f99bf11e45639a4",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1280.697399750352
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1438.4786002337933,
+      "persisted_match": true
+    },
+    {
+      "index": 47,
+      "actor": "customer",
+      "question": "生鲜食品破损如何申请退款？请列出处理步骤和文档中的订单提交示例。",
+      "conversation_id": 55,
+      "message_id": 116,
+      "request_id": "bde77346bc3c49cf89bd56a3b9c78622",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1165.3018994256854
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1437.324800528586,
+      "persisted_match": true
+    },
+    {
+      "index": 48,
+      "actor": "department",
+      "question": "生鲜食品破损如何申请退款",
+      "conversation_id": 56,
+      "message_id": 118,
+      "request_id": "fcf36b2482664b95b6ba51013468b15d",
+      "status": "complete",
+      "source_mode": "faq",
+      "usage": {
+        "tokens": {
+          "prompt_tokens": 0,
+          "completion_tokens": 0,
+          "total_tokens": 0
+        },
+        "known": true,
+        "latency_ms": 1194.7849001735449
+      },
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a",
+      "elapsed_ms": 1381.5713999792933,
+      "persisted_match": true
+    }
+  ],
+  "redis_entries": [
+    {
+      "key": "knowledge:faq:v1:8f7b6b27e4f97757cc7be6881d87e4a246227ad2be97cd3a45f68bcd38952c60",
+      "ttl_seconds": 224,
+      "release_id": 1,
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a"
+    },
+    {
+      "key": "knowledge:faq:v1:3d16ee646c6f6e0a0d41095a0e320a786f2940e12460bd02411848e91294bfc3",
+      "ttl_seconds": 124,
+      "release_id": 1,
+      "answer_sha256": "6a509271398848fc29affe16bfc4c6f217860b9c7b4a0388bc2c4bdff582de1a"
+    }
+  ]
+}
