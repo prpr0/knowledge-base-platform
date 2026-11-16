@@ -132,13 +132,13 @@ async def answer_stream(sessions, settings, actor_id, token_version, conversatio
                         record_gap(session, actor, question)
                 else:
                     config = await asyncio.to_thread(verified_configuration, session, settings)
-                    if max(ref['score'] for ref in refs) < config['threshold']:
+                    if config['threshold'] is not None and max(ref['score'] for ref in refs) < config['threshold']:
                         mode, text = 'refusal', '现有证据不足以支持可靠回答，请补充相关资料或适用条件。'
                         record_gap(session, actor, question, max(ref['score'] for ref in refs))
                         refs = []
                     else:
                         messages, refs = await asyncio.to_thread(prompt_messages, session, settings, actor, conversation_id, question, refs)
-                        mode, version = 'model', config['model_version']
+                        mode, version = 'external_api' if config['mode'] == 'external_api' else 'model', config['model_version']
                         audit.model_called, audit.model_version = True, version
                         audit.sources = public_citations(refs)
                         audit.source_mode = mode
@@ -158,7 +158,7 @@ async def answer_stream(sessions, settings, actor_id, token_version, conversatio
                         labels = {ref['label'] for ref in refs}
                         if not text.strip() or not cited or not cited.issubset(labels):
                             raise HTTPException(502, '模型回答缺少有效引用或包含未知引用编号')
-            if mode != 'model':
+            if mode not in ('model', 'external_api'):
                 yield event('meta', dict(request_id=identifier, restricted=restricted, model_version=None, source_mode=mode, message_id=answer_id))
                 if refs and not authorized_sources(session, actor, refs):
                     raise HTTPException(403, '来源已失效')

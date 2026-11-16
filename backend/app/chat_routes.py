@@ -1,4 +1,5 @@
 """为已认证用户提供私人会话、受控引用和管理员模型配置。"""
+from typing import Literal
 from fastapi import APIRouter, Depends, HTTPException, Response
 from fastapi.responses import StreamingResponse
 from pydantic import Field
@@ -25,7 +26,8 @@ class QuestionInput(Input):
 class ModelInput(Input):
     """服务凭证只写入，不在任何响应中返回。"""
     base_url: str = Field(min_length=1, max_length=512)
-    model_name: str = MODEL_NAME
+    mode: Literal['finetuned', 'external_api'] = 'finetuned'
+    model_name: str = Field(default=MODEL_NAME, min_length=1, max_length=128)
     api_key: str | None = Field(default=None, max_length=8192)
     release_manifest_path: str | None = None
     calibration_manifest_path: str | None = None
@@ -43,7 +45,7 @@ def build_chat_router(settings, database, current_user, sessions):
 
     @router.put('/settings/model')
     def update_settings(payload: ModelInput, actor: User = Depends(current_user), session=Depends(database)):
-        """验证真实发布后保存，尚无发布时保留明确未就绪状态。"""
+        """按模式验证后保存，并明确返回发布与检索校准状态。"""
         require(actor, 'model:manage')
         return save_configuration(session, settings, actor, payload.model_dump())
 

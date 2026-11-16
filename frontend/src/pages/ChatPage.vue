@@ -17,7 +17,7 @@ const suggestions = computed(() => [...new Set(messages.value.filter((row) => ro
 async function refresh(): Promise<void> { conversations.value = await request<Conversation[]>('/conversations') }
 /** 切换前取消旧流并销毁旧正文，迟到响应不再覆盖新会话。 */
 async function selectConversation(id: number): Promise<void> {
-  cancel(); const current = ++revision; selected.value = id; messages.value = []; preview.value = null; error.value = ''; usage.value = ''; restricted.value = false
+  cancel(); const current = ++revision; selected.value = id; messages.value = []; preview.value = null; error.value = ''; usage.value = ''; model.value = ''; restricted.value = false
   loading.value = true
   try { const rows = await request<ChatMessage[]>('/conversations/' + id + '/messages'); if (current === revision && !disposed) { messages.value = rows; title.value = conversations.value.find((row) => row.id === id)?.title ?? '新会话' } }
   catch (cause) { if (current === revision) error.value = cause instanceof Error ? cause.message : '会话读取失败' }
@@ -37,17 +37,24 @@ async function rename(): Promise<void> {
 /** 用户明确点击删除后才移除会话。 */
 async function remove(): Promise<void> {
   if (!selected.value) return
-  try { await ElMessageBox.confirm('删除当前会话及其消息？', '删除会话', { type: 'warning' }); cancel(); await request('/conversations/' + selected.value, 'DELETE'); selected.value = null; messages.value = []; await refresh() }
+  try { await ElMessageBox.confirm('删除当前会话及其消息？', '删除会话', { type: 'warning' }); cancel(); await request('/conversations/' + selected.value, 'DELETE'); selected.value = null; messages.value = []; model.value = ''; usage.value = ''; await refresh() }
   catch (cause) { if (cause instanceof Error) error.value = cause.message }
 }
 /** 取消时立即隐藏未完成正文，上游连接由AbortSignal关闭。 */
 function cancel(): void { controller?.abort(); controller = null; running.value = false; for (const row of messages.value) if (row.status === 'running') { row.content = ''; row.citations = []; row.status = 'cancelled' } }
+/** 根据每条消息保存的来源和模型名展示标识，历史重载后仍保持明确。 */
+function answerLabel(message: ChatMessage): string {
+  if (message.source_mode === 'external_api') return '外部 API 联调 · ' + (message.model_version || '模型名称未返回')
+  if (message.source_mode === 'faq') return '已发布 FAQ'
+  if (message.model_version) return '正式微调模型 · ' + message.model_version
+  return '来源：' + (message.source_mode || '等待模型信息')
+}
 /** 发送真实问题；收到error不会保留流式草稿或成功状态。 */
 async function send(): Promise<void> {
   if (running.value || !question.value.trim()) return
   if (!selected.value) { await create(); if (!selected.value) return }
   const current = revision, id = selected.value, text = question.value.trim()
-  const abort = new AbortController(); controller = abort; running.value = true; error.value = ''; usage.value = ''; restricted.value = false
+  const abort = new AbortController(); controller = abort; running.value = true; error.value = ''; usage.value = ''; model.value = ''; restricted.value = false
   question.value = ''
   messages.value.push({ id: -1, role: 'user', content: text, status: 'complete', citations: [], model_version: null, source_mode: null })
   messages.value.push({ id: -2, role: 'assistant', content: '', status: 'running', citations: [], model_version: null, source_mode: null })
@@ -55,7 +62,7 @@ async function send(): Promise<void> {
   try {
     await askStream(id, text, abort.signal, (name, data) => {
       if (current !== revision || disposed) return
-      if (name === 'meta') { restricted.value = Boolean(data.restricted); answer.id = Number(data.message_id); model.value = data.model_version ? String(data.model_version) : String(data.source_mode); answer.source_mode = String(data.source_mode) }
+      if (name === 'meta') { restricted.value = Boolean(data.restricted); answer.id = Number(data.message_id); answer.model_version = data.model_version ? String(data.model_version) : null; answer.source_mode = data.source_mode ? String(data.source_mode) : null; model.value = answerLabel(answer) }
       if (name === 'delta') answer.content += String(data.text ?? '')
       if (name === 'citations') answer.citations = data.items as Citation[]
       if (name === 'usage') usage.value = data.known ? JSON.stringify(data.tokens) + ' · ' + Number(data.latency_ms).toFixed(0) + ' ms' : '模型未返回Token用量'
@@ -94,6 +101,7 @@ onBeforeUnmount(() => { disposed = true; revision++; cancel(); messages.value = 
       <el-empty v-if="!messages.length" description="输入问题，开始基于资料的对话" />
       <article v-for="(row, index) in messages" :key="index" class="chat-message" :class="row.role">
         <strong>{{ row.role === 'user' ? '我' : '知识助手' }}</strong>
+        <p v-if="row.role === 'assistant'" class="field-hint">{{ answerLabel(row) }}</p>
         <p v-if="row.status === 'unavailable'" class="muted">来源权限或版本已失效，历史答案不可用。</p>
         <p v-else-if="row.status === 'error'" class="muted">本轮失败，未生成有效答案。</p>
         <p v-else-if="row.status === 'cancelled'" class="muted">本轮已中止。</p>

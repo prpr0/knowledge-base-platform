@@ -289,9 +289,13 @@ class ModelConfiguration(Base):
     """保存模型服务配置、加密密钥及真实发布与校准验证状态。"""
 
     __tablename__ = "model_configurations"
+    __table_args__ = (
+        CheckConstraint("mode IN ('finetuned', 'external_api')", name="ck_model_configurations_mode"),
+    )
 
     id: Mapped[int] = mapped_column(primary_key=True, default=1, server_default=text("1"))
     base_url: Mapped[str] = mapped_column(String(512), default="", server_default=text("''"))
+    mode: Mapped[str] = mapped_column(String(32), default="finetuned", server_default=text("'finetuned'"))
     model_name: Mapped[str] = mapped_column(
         String(128), default="kb-grounded-qwen3-4b-v1",
         server_default=text("'kb-grounded-qwen3-4b-v1'"),

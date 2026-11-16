@@ -2,7 +2,7 @@
 
 ## 交付状态与边界
 
-本项目面向中文技术支持与操作知识库，依据工作区只读需求`real/2.9.md`与`real/4.1.md`。组织权限、多格式导入/版本发布、真实混合检索、私人会话/SSE及安全历史引用、FAQ审核缓存与真实BGE聚类、缺口补充任务、运营和独立审计均已落到代码；本地FastAPI/Vue/Celery，虚拟机PostgreSQL16+pgvector/Redis。真实微调模型和独立检索校准尚未交付，生成入口明确error，不把门禁或FAQ答复当作最终模型联调完成。
+本项目面向中文技术支持与操作知识库，依据工作区只读需求`real/2.9.md`与`real/4.1.md`。组织权限、多格式导入/版本发布、真实混合检索、私人会话/SSE及安全历史引用、FAQ审核缓存与真实BGE聚类、缺口补充任务、运营和独立审计均已落到代码；本地FastAPI/Vue/Celery，虚拟机PostgreSQL16+pgvector/Redis。用户明确要求先通过其他大模型API联调，现增加显式external_api模式，可接入DeepSeek等OpenAI兼容服务。正式微调模式继续要求真实发布与校准，外部API联调不计为微调质量验收。
 
 最终生成模型必须是 `knowledge-model-finetuning` 交付的 `kb-grounded-qwen3-4b-v1`，基座对照不算完成。嵌入和重排模型保持预训练，不进行训练；已按授权将tokenizer/BGE资源下载本地并记录revision/hash。真实开发按TDD验证行为，实际证据在工作区任务记录；业务入口位于backend.app，初始化src包保留说明。
 
@@ -182,12 +182,13 @@ PV按有效问答请求计数，UV在同一时间窗按用户去重；有效请�
 
 | 配置/接口 | 约束 |
 |---|---|
+| `MODEL_MODE` | 默认`finetuned`；外部API联调显式设为`external_api`，页面、消息与审计标识联调来源 |
 | `MODEL_BASE_URL` | OpenAI 兼容模型服务基础地址；平台拼接 `/v1/chat/completions`，不得重复拼接 `/v1` |
-| `MODEL_NAME` | 正式值固定为 `kb-grounded-qwen3-4b-v1`，必须对应已验收发布产物 |
+| `MODEL_NAME` | 正式值固定`kb-grounded-qwen3-4b-v1`；external_api使用供应商模型ID，例如`deepseek-flash` |
 | `MODEL_API_KEY` | 服务鉴权密钥；仅管理员可修改，接口不回显，不写日志或 Git |
 | `POST /v1/chat/completions` | 请求含 `model`、`messages`、`stream=true`；模型上下文上限与真实服务配置一致 |
 
-当前初始化阶段没有真实 `.env`，也没有运行中的模型服务。后续平台启动时校验配置与发布版本；未配置、未发布、服务不可用或调用失败均明确失败，不静默更换模型。微调模型交付前，基座只能作为明确标注的对照实验，不算最终联调成功。
+正式模式启动生成前校验配置与发布版本；未配置、未发布、服务不可用或调用失败均明确失败，不静默更换模型。外部API模式无需微调产物，校准报告可选；未提供时不执行分数阈值判断，明确显示未校准，保留无证据拒答、来源ACL、历史撤权、引用编号验证与真实用量审计。本地Qwen模板仅控制提示规模，不代表供应商实际分词。外部联调验证平台链路，正式微调质量仍须按原契约验收。
 
 模型服务返回内容流和真实可得 `usage`，平台将 OpenAI 流转换为面向浏览器的 SSE；原始模型流不直接冒充平台事件。usage 通过兼容服务支持的流式 usage 选项获取，不能获取则标记未知，不以字符数伪造 Token；平台单独记录真实耗时。会话、受限提示、引用元数据、审计及运营由平台处理。
 
@@ -245,4 +246,4 @@ user 内容采用同一结构（尖括号内容表示运行时填充值，不是
 - [FlagEmbedding官方仓库](https://github.com/FlagOpen/FlagEmbedding)：BGE-M3多语言嵌入及重排能力；[bge-m3模型页](https://huggingface.co/BAAI/bge-m3)与[bge-reranker-v2-m3模型页](https://huggingface.co/BAAI/bge-reranker-v2-m3)许可前期通过搜索核实，下载时复核。
 - [Kubernetes中文官方文档](https://kubernetes.io/zh-cn/docs/home/)提示译文可能过时，官网CC BY 4.0前期经官方站点搜索核实；[Python 3.11许可](https://docs.python.org/zh-cn/3.11/license.html)说明PSF及示例代码0BSD。
 
-官方能力、项目设计值与实测须区分：512/64切片、50/50召回、RRF60与最多8片已用真实tokenizer/BGE/pgvector/全文验证；FAQ7天5次、来源AND鉴权缓存、缺口/指标和独立审计已有实现。发布质量门槛与校准报告校验已有代码，真实微调产物、独立校准结果、生产性能和训练提升未验证。最终生成联调仍待微调项目交付，不伪报通过。原生目录选择器自动化未成功，目录路径API与普通批量上传已真实验证。
+官方能力、项目设计值与实测须区分：512/64切片、50/50召回、RRF60与最多8片已用真实tokenizer/BGE/pgvector/全文验证；FAQ7天5次、来源AND鉴权缓存、缺口/指标和独立审计已有实现。新增external_api模式用于用户指定的DeepSeek联调，验证结果记录在任务进度。发布质量门槛与校准报告校验保留，真实微调产物、独立校准结果、生产性能和训练提升仍未验证。原生目录选择器自动化未成功，目录路径API与普通批量上传已真实验证。
