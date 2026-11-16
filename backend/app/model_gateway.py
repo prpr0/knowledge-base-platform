@@ -111,7 +111,7 @@ def configuration(session, settings):
     """数据库配置优先，环境仅在尚未保存配置时采用。"""
     row = session.get(ModelConfiguration, 1)
     if row is None:
-        return dict(base_url=settings.model_base_url, model_name=settings.model_name, api_key=settings.model_api_key,
+        return dict(mode=settings.model_mode, base_url=settings.model_base_url, model_name=settings.model_name, api_key=settings.model_api_key,
             release_manifest_path=settings.model_release_manifest_path, calibration_manifest_path=settings.model_calibration_manifest_path)
     key = ''
     if row.api_key_ciphertext:
@@ -119,13 +119,24 @@ def configuration(session, settings):
             key = cipher(settings).decrypt(row.api_key_ciphertext.encode()).decode()
         except (ValueError, InvalidToken):
             raise HTTPException(503, '模型密钥无法解密，请检查独立配置密钥') from None
-    return dict(base_url=row.base_url, model_name=row.model_name, api_key=key,
+    return dict(mode=row.mode, base_url=row.base_url, model_name=row.model_name, api_key=key,
         release_manifest_path=row.release_manifest_path, calibration_manifest_path=row.calibration_manifest_path)
 
 
 def verified_configuration(session, settings):
-    """每次使用前验证真实产物和校准，不能通过数据库标记绕过。"""
+    """按模式验证模型配置，外部API只在提供校准时验证检索阈值。"""
     config = configuration(session, settings)
+    if config['mode'] == 'external_api':
+        try:
+            config['base_url'] = validate_url(config['base_url'])
+            if not config['model_name'].strip() or len(config['model_name']) > 128:
+                raise ValueError('外部模型名称不能为空且不得超过128字符')
+            config['threshold'] = validate_calibration(config['calibration_manifest_path'], settings) if config['calibration_manifest_path'] else None
+        except (ValueError, OSError, KeyError, TypeError):
+            raise HTTPException(503, '外部模型地址、名称或检索校准不符合要求，请检查模型设置') from None
+        config.update(model_version=config['model_name'], manifest_hash=None, release_verified=False,
+            disable_thinking=settings.model_disable_thinking)
+        return config
     if not config['base_url'] or config['model_name'] != MODEL_NAME:
         raise HTTPException(503, '指定微调模型尚未配置')
     try:
@@ -142,11 +153,25 @@ def verified_configuration(session, settings):
 def configuration_view(session, settings):
     """只公开配置状态，不回显密钥、密文或服务器文件路径。"""
     row = session.get(ModelConfiguration, 1)
-    result = dict(base_url=row.base_url if row else settings.model_base_url, model_name=row.model_name if row else settings.model_name,
+    result = dict(mode=row.mode if row else settings.model_mode, base_url=row.base_url if row else settings.model_base_url, model_name=row.model_name if row else settings.model_name,
         has_api_key=bool(row.api_key_ciphertext if row else settings.model_api_key), model_version=None,
         release_verified=False, calibration_verified=False, configuration_id=retrieval_config_id(settings), status='未完成发布或校准')
     release = row.release_manifest_path if row else settings.model_release_manifest_path
     calibration = row.calibration_manifest_path if row else settings.model_calibration_manifest_path
+    if result['mode'] == 'external_api':
+        result['model_version'] = result['model_name']
+        result['status'] = '外部API模式，检索未校准'
+        try:
+            validate_url(result['base_url'])
+            if not result['model_name'].strip() or len(result['model_name']) > 128:
+                raise ValueError('外部模型名称无效')
+            if calibration:
+                validate_calibration(calibration, settings)
+                result['calibration_verified'] = True
+                result['status'] = '外部API模式，检索校准已验证'
+        except (ValueError, OSError, KeyError, TypeError):
+            result['status'] = '外部API配置或检索校准验证失败'
+        return result
     try:
         if release:
             result['model_version'], _ = validate_release(release)
@@ -163,23 +188,30 @@ def configuration_view(session, settings):
 
 def save_configuration(session, settings, actor, values):
     """先验证完整输入再原子保存，凭证只能写入加密字段。"""
+    row = session.get(ModelConfiguration, 1)
+    api_key = values.get('api_key') or (settings.model_api_key if row is None else '')
     try:
         url = validate_url(values['base_url'])
-        if values['model_name'] != MODEL_NAME:
+        mode = values.get('mode', 'finetuned')
+        if mode not in ('finetuned', 'external_api'):
+            raise ValueError('模型模式无效')
+        if not values['model_name'].strip() or len(values['model_name']) > 128:
+            raise ValueError('模型名称不能为空且不得超过128字符')
+        if mode == 'finetuned' and values['model_name'] != MODEL_NAME:
             raise ValueError('必须使用指定微调模型别名')
-        version, digest = validate_release(values['release_manifest_path']) if values.get('release_manifest_path') else (None, None)
+        version, digest = validate_release(values['release_manifest_path']) if mode == 'finetuned' and values.get('release_manifest_path') else (None, None)
         threshold = validate_calibration(values['calibration_manifest_path'], settings) if values.get('calibration_manifest_path') else None
-        encrypted = cipher(settings).encrypt(values['api_key'].encode()).decode() if values.get('api_key') else None
+        encrypted = cipher(settings).encrypt(api_key.encode()).decode() if api_key else None
     except (ValueError, OSError, KeyError, TypeError):
-        raise HTTPException(422, '模型地址、加密密钥、发布产物或校准报告不符合要求') from None
-    row = session.get(ModelConfiguration, 1)
+        raise HTTPException(422, '模型模式、地址、名称、加密密钥、发布产物或校准报告不符合要求') from None
     if row is None:
         row = ModelConfiguration(id=1)
         session.add(row)
     row.base_url, row.model_name = url, values['model_name']
-    if values.get('api_key') is not None:
+    row.mode = mode
+    if api_key:
         row.api_key_ciphertext = encrypted
-    row.release_manifest_path, row.release_version, row.release_manifest_hash = values.get('release_manifest_path'), version, digest
+    row.release_manifest_path, row.release_version, row.release_manifest_hash = values.get('release_manifest_path') if mode == 'finetuned' else None, version, digest
     row.release_verified = version is not None
     row.calibration_manifest_path, row.score_threshold = values.get('calibration_manifest_path'), threshold
     row.calibration_verified, row.updated_by = threshold is not None, actor.id
@@ -192,9 +224,12 @@ async def stream_completion(config, messages):
     url = config['base_url'].rstrip('/')
     url += '/chat/completions' if url.endswith('/v1') else '/v1/chat/completions'
     headers = {'Authorization': 'Bearer ' + config['api_key']} if config['api_key'] else {}
+    body = dict(model=config['model_name'], messages=messages, stream=True,
+        stream_options={'include_usage': True}, temperature=0, max_tokens=1024)
+    if config.get('disable_thinking', False):
+        body['thinking'] = {'type': 'disabled'}
     async with httpx.AsyncClient(timeout=httpx.Timeout(120, connect=10)) as client:
-        async with client.stream('POST', url, headers=headers, json=dict(model=MODEL_NAME, messages=messages,
-            stream=True, stream_options={'include_usage': True}, temperature=0, max_tokens=1024)) as response:
+        async with client.stream('POST', url, headers=headers, json=body) as response:
             response.raise_for_status()
             ended = False
             async for line in response.aiter_lines():

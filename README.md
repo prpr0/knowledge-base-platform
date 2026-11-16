@@ -2,11 +2,13 @@
 
 中文技术支持与操作知识库平台。本地FastAPI、Vue控制台与Celery worker，虚拟机PostgreSQL16/pgvector及独立Redis持久化服务。
 
-已实现组织身份/RBAC、四维ACL、多格式导入、真实token切片与BGE混合检索、版本发布与鉴权下载、私人会话/SSE、安全历史及引用、FAQ聚类审核缓存、缺口补充任务、运营看板和独立审计。生成入口只接受指定微调模型发布及独立检索校准；当前没有真实微调产物，生成问答明确失败，FAQ与无证据拒答不调用模型。
+已实现组织身份/RBAC、四维ACL、多格式导入、真实token切片与BGE混合检索、版本发布与鉴权下载、私人会话/SSE、安全历史及引用、FAQ聚类审核缓存、缺口补充任务、运营看板和独立审计。生成支持正式微调与外部API联调两种显式模式；当前可先用DeepSeek等OpenAI兼容服务验证平台链路。正式微调模式仍要求真实发布产物及独立检索校准；FAQ与无证据拒答不调用模型。
 
 本项目对应 `real/2.9.md` 的知识维护、权限问答、FAQ、缺口与运营需求。最终生成模型必须来自独立项目 `knowledge-model-finetuning`，发布别名为 `kb-grounded-qwen3-4b-v1`。 两项目通过 OpenAI 兼容服务契约协作，不复制代码或导入兄弟目录。微调模型发布前，基座对照实验不计为最终联调成功。
 
 详细技术栈、架构、需求覆盖、实施顺序、统一契约与未来验收见 [实现方案](docs/implementation-plan.md)。
+
+上传到普通用户提问的自动化全链路测试及Ragas评分入口见[评测操作说明](docs/ragas-evaluation.md)。使用固定版本CMRC 2018人工标注开发集，保留真实上传任务、索引版本、模型回答、实际引用上下文及逐例质量指标；数据、评测依赖和报告分别保存在忽略目录。
 
 ## 本地依赖与运行前提
 
@@ -108,20 +110,22 @@ Windows使用solo池。任务进度、错误及发布状态以PostgreSQL为准�
 
 无召回或已验证低证据请求进入缺口池；纯权限阻断及模型服务失败不误记缺口。补充任务导入入口携带`supplement_task_id`，关联导入全部成功发布后，补充任务和缺口同事务关闭。指标来自真实有效问答审计，包含失败、拒答和权限拦截，排除认证/格式错误；Token未知次数单列。`POST /metrics/aggregate`提交每日快照任务，`GET /metrics`使用相同计数规则。图表无演示数据，问题及来源排行另受本人/直属部门和当前ACL限制。
 
-## 正式模型配置与门禁
+## 模型配置与联调
 
-“模型设置”只能由`model:manage`维护。服务环境可用`MODEL_BASE_URL`、固定`MODEL_NAME=kb-grounded-qwen3-4b-v1`和`MODEL_API_KEY`；数据库保存配置后不再混用环境值。API密钥以Fernet加密，独立`CONFIG_ENCRYPTION_KEY`由运行环境提供，缺失时拒绝写入密钥。GET不回显凭证或密文；空密钥提交表示保留原值。URL只允许不含内嵌凭证的HTTP/HTTPS。
+“模型设置”只能由`model:manage`维护。`MODEL_MODE=finetuned`为默认正式模式，模型名固定`kb-grounded-qwen3-4b-v1`。先联调外部服务时显式选择`external_api`，并配置`MODEL_BASE_URL`、`MODEL_NAME`和`MODEL_API_KEY`，例如`https://api.deepseek.com`与`deepseek-flash`。数据库保存配置后不再混用环境值。API密钥以Fernet加密，独立`CONFIG_ENCRYPTION_KEY`由运行环境提供，缺失时拒绝写入密钥。GET不回显凭证或密文；空密钥提交表示保留原值。URL只允许不含内嵌凭证的HTTP/HTTPS。
 
 发布清单路径为`MODEL_RELEASE_MANIFEST_PATH`，校准路径为`MODEL_CALIBRATION_MANIFEST_PATH`。清单包含`model_name/model_version/base_model/base_revision/artifacts:[{path,sha256}]/evaluation_report`；`base_model`固定`Qwen/Qwen3-4B-Instruct-2507`，所有文件限于清单目录，评估报告本身必须列入摘要。报告`metrics.base`和`metrics.finetuned`包含`citation_validity/evidence_support/keypoint_coverage/terminology_format/refusal_recall/answerable_false_refusal`比例；执行方案固定门槛及基座比较，未通过不发布。配置与使用前重新验证，不以布尔标记代替文件证据。
 
-校准报告包含`validated=true`、`configuration_id`、有限`threshold`，以及`unanswerable_count/wrong_answer_count/answerable_count/supported_retrieval_count`真实人工审核计数；错误作答率须≤5%。配置标识可从模型设置页读取，绑定当前检索模型路径与50/50、RRF60、8片、4096/1024预算。模型或检索参数变化后需重新独立校准。当前不生成或伪造报告；没有真实发布与校准时，其他平台链路可运行，模型生成返回明确error。
+校准报告包含`validated=true`、`configuration_id`、有限`threshold`，以及`unanswerable_count/wrong_answer_count/answerable_count/supported_retrieval_count`真实人工审核计数；错误作答率须≤5%。配置标识可从模型设置页读取，绑定当前检索模型路径与50/50、RRF60、8片、4096/1024预算。检索模型或参数变化后需重新独立校准。正式模式缺少真实发布与校准时明确失败。外部联调模式无需微调发布清单，校准报告可选；如未提供则不使用低证据分数阈值，页面明确标识未校准，继续执行无证据拒答、ACL过滤、引用验证和审计。外部API联调不代表正式微调质量验收通过。
 
-上游使用OpenAI兼容`POST /v1/chat/completions`、`stream=true`与真实usage。输入使用固定证据system约束、问题及本轮编号证据；按真实Qwen聊天模板计数，总4096、生成预留1024。不存在的引用编号使本轮失败，不生成虚构卡片。
+上游使用OpenAI兼容`POST /v1/chat/completions`、`stream=true`与真实usage，请求中的`model`使用选定配置。输入使用固定证据system约束、问题及本轮编号证据；保留本地Qwen聊天模板3072输入token上限及1024输出限制。外部模型的分词与本地Qwen不同，该上限仅控制输入规模，实际Token用量以供应商返回值为准。不存在的引用编号使本轮失败，不生成虚构卡片。外部生成的消息、流meta和审计均记录`source_mode=external_api`及实际模型名，历史消息保留联调标识。
+
+前轮使用`deepseek-flash`完成真实BGE检索→供应商流式生成→引用预览与历史标识验证，凭证通过进程环境注入，不写项目文件。该轮真实问答返回1,366 Token（471输入、895输出，输出含607推理Token），平台记录耗时约295秒，不代表性能达标。本轮CMRC评测显式使用非思考模式，参数与结果另行记录，不能直接作未经控制的性能对照。进程重启后须重新安全注入运行变量，实际命令和范围见工作区`external-api-integration/PROGRESS.md`。
 
 ## 验证与权限语义
 
 ```powershell
-.venv/Scripts/python.exe -B -m pytest tests/test_qa_operations.py tests/test_model_gateway.py tests/test_api.py tests/test_publishing.py tests/test_ingestion_api.py -q
+.venv/Scripts/python.exe -B -m pytest tests/test_external_api.py tests/test_model_gateway.py tests/test_qa_operations.py -q
 Push-Location frontend
 npm test
 npm run build
@@ -137,9 +141,9 @@ Pop-Location
 ## 当前结构
 
 - `backend/app/`：组织/认证、解析索引、版本发布、Celery导入/聚类/指标、检索、模型门禁、会话SSE、完整证据授权、FAQ/缺口及独立审计。
-- `backend/migrations/`与`backend/alembic.ini`：显式迁移及真实GIN/HNSW索引；启动不自动建表，当前包含0003问答运营结构。
+- `backend/migrations/`与`backend/alembic.ini`：显式迁移及真实GIN/HNSW索引；启动不自动建表，当前包含0004外部模型联调模式迁移。
 - `frontend/`：组织/知识/导入/检索、会话、FAQ审核、缺口补充、运营、审计与模型设置控制台。
-- `tests/`：组织/ACL、解析发布、上传重试、历史撤权/FAQ来源AND、模型门禁、缺口/指标与前端UUID回归。
+- `tests/`：组织/ACL、解析发布、上传重试、历史撤权/FAQ来源AND、正式模型门禁、外部API配置/传输/引用审计、缺口/指标与前端UUID回归。
 - `deploy/logging.yaml`、`.env.example`：当前日志与运行变量说明，不含真实凭证。
 - `pyproject.toml`、`.python-version`、`uv.lock`：Python环境和依赖。
 - `src/knowledge_base_platform/__init__.py`：保留初始化包说明；运行入口在`backend.app`，不宣称已打包安装。
